@@ -81,7 +81,7 @@ export default function HomePage() {
           <div className="home-hero__copy">
             <p className="home-eyebrow">
               <span className="home-eyebrow__line" aria-hidden="true" />
-              Queen&apos;s University · Student Design Team
+              Queen&apos;s University · Student Club
             </p>
             <h1>
               Computing at a <span>larger scale.</span>
