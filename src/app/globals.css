@@ -186,6 +186,18 @@ code, pre, .font-mono {
 }
 
 /* ===== PUBLIC-FACING HOME PAGE ===== */
+.qhpc-brand-logo__image--dark {
+  display: none;
+}
+
+.dark .qhpc-brand-logo__image--light {
+  display: none;
+}
+
+.dark .qhpc-brand-logo__image--dark {
+  display: block;
+}
+
 .home-page {
   overflow: hidden;
 }
@@ -327,12 +339,11 @@ code, pre, .font-mono {
   width: 100%;
   max-width: 590px;
   justify-self: end;
-  padding: 1rem 1rem .8rem;
+  aspect-ratio: 779 / 466;
   overflow: hidden;
   border: 1px solid color-mix(in srgb, var(--primary) 22%, var(--border));
   border-radius: 18px;
-  background:
-    linear-gradient(145deg, color-mix(in srgb, var(--card) 90%, transparent), color-mix(in srgb, var(--background) 92%, transparent));
+  background: var(--card);
   box-shadow: 0 32px 90px rgba(0, 0, 0, .18), inset 0 1px rgba(255, 255, 255, .035);
 }
 
@@ -341,22 +352,32 @@ code, pre, .font-mono {
   inset: 0;
   pointer-events: none;
   content: "";
-  opacity: .36;
+  opacity: .12;
   background-image: linear-gradient(color-mix(in srgb, var(--border) 65%, transparent) 1px, transparent 1px), linear-gradient(90deg, color-mix(in srgb, var(--border) 65%, transparent) 1px, transparent 1px);
   background-size: 38px 38px;
   mask-image: linear-gradient(to bottom, black, transparent 84%);
 }
 
+.compute-visual__image {
+  object-fit: cover;
+}
+
 .compute-visual__topline,
 .compute-visual__caption {
-  position: relative;
+  position: absolute;
   z-index: 1;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  left: 1rem;
+  right: 1rem;
   color: var(--text-muted);
   font: 600 .62rem/1.4 var(--font-mono);
   letter-spacing: .12em;
+}
+
+.compute-visual__topline {
+  top: 1rem;
 }
 
 .compute-visual__mark,
@@ -377,9 +398,9 @@ code, pre, .font-mono {
 }
 
 .compute-visual__caption {
+  bottom: .9rem;
   justify-content: flex-start;
   gap: .8rem;
-  padding: .15rem .15rem .1rem;
 }
 
 .compute-visual__caption-line {
@@ -747,7 +768,7 @@ code, pre, .font-mono {
   }
 
   .compute-visual {
-    padding: .7rem .6rem .65rem;
+    padding: 0;
     border-radius: 13px;
   }
 
