@@ -13,3 +13,8 @@ perf.*
 install/
 build/
 log/
+
+# Next.js dependencies and generated files.
+node_modules/
+.next/
+next-env.d.ts
