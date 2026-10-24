@@ -1,8 +1,8 @@
 export const siteConfig = {
-  name: "QHPC — Queen's High-Performance Computing",
+  name: "Queen's High Performance Computing Club",
   shortName: "QHPC",
   description:
-    "The first Engineering Society‑ratified supercomputing club at Queen's University. Hands‑on HPC workshops, competitions, and community.",
+    "QHPC brings Queen's University students together through hands-on high-performance computing projects, workshops, and cluster competitions.",
   url: "https://qhpc.org", // TODO: Replace with actual domain when deployed
   ogImage: "https://qhpc.org/og.jpg",
   contact: {

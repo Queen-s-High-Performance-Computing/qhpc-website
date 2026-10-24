@@ -9,11 +9,14 @@ import {
   Network,
   Trophy,
 } from "lucide-react";
+import { QhpcButtonLink } from "@/components/ui/QhpcButtonLink";
+import { SectionLabel } from "@/components/ui/SectionLabel";
+import { SurfaceCard } from "@/components/ui/SurfaceCard";
 
 export const metadata: Metadata = {
-  title: "Queen's High-Performance Computing",
+  title: "Queen's High Performance Computing Club",
   description:
-    "Meet QHPC, Queen's University's student high-performance computing team. Learn through hands-on projects, workshops, and cluster competitions.",
+    "Meet QHPC, Queen's University's student high-performance computing club. Learn through hands-on projects, workshops, and cluster competitions.",
   alternates: {
     canonical: "/",
   },
@@ -61,7 +64,7 @@ function ClusterIllustration() {
         className="compute-visual__image"
       />
       <div className="compute-visual__topline" aria-hidden="true">
-        <span>QHPC / SYSTEMS LAB</span>
+        <span>QUEEN&apos;S · COMPUTING</span>
         <span className="compute-visual__mark" aria-hidden="true" />
       </div>
       <div className="compute-visual__caption" aria-hidden="true">
@@ -79,10 +82,10 @@ export default function HomePage() {
       <section className="home-hero grid-bg">
         <div className="home-hero__inner">
           <div className="home-hero__copy">
-            <p className="home-eyebrow">
+            <SectionLabel onDark className="home-eyebrow">
               <span className="home-eyebrow__line" aria-hidden="true" />
               Queen&apos;s University · Student Club
-            </p>
+            </SectionLabel>
             <h1>
               Computing at a <span>larger scale.</span>
             </h1>
@@ -92,12 +95,12 @@ export default function HomePage() {
               hands-on projects, workshops, and cluster competitions.
             </p>
             <div className="home-hero__actions">
-              <Link href="#work" className="home-button home-button--primary">
+              <QhpcButtonLink href="#work" className="home-button">
                 Discover QHPC <ArrowRight size={17} aria-hidden="true" />
-              </Link>
-              <Link href="/contact" className="home-button home-button--quiet">
+              </QhpcButtonLink>
+              <QhpcButtonLink href="/contact" variant="outline" className="home-button">
                 Get in touch <ArrowUpRight size={16} aria-hidden="true" />
-              </Link>
+              </QhpcButtonLink>
             </div>
             <p className="home-hero__note">
               The first Engineering Society-ratified supercomputing club at Queen&apos;s.
@@ -114,7 +117,7 @@ export default function HomePage() {
       <section className="home-work" id="work">
         <div className="home-section-heading">
           <div>
-            <p className="home-section-kicker">LEARN · BUILD · COMPETE</p>
+            <SectionLabel>LEARN · BUILD · COMPETE</SectionLabel>
             <h2>Curiosity, put to work.</h2>
           </div>
           <p>
@@ -125,7 +128,7 @@ export default function HomePage() {
 
         <div className="home-focus-grid">
           {focusAreas.map(({ number, icon: Icon, title, description, href, linkLabel }) => (
-            <article className="home-focus-card" key={number}>
+            <SurfaceCard className="home-focus-card" key={number}>
               <div className="home-focus-card__top">
                 <span className="home-focus-card__number">{number}</span>
                 <span className="home-focus-card__icon"><Icon size={20} aria-hidden="true" /></span>
@@ -135,7 +138,7 @@ export default function HomePage() {
               <Link href={href} className="home-text-link">
                 {linkLabel} <ArrowRight size={15} aria-hidden="true" />
               </Link>
-            </article>
+            </SurfaceCard>
           ))}
         </div>
       </section>
@@ -144,19 +147,19 @@ export default function HomePage() {
         <div className="home-project__visual" aria-hidden="true">
           <div className="home-project__halo" />
           <div className="home-project__stack">
-            <div className="home-project__stack-label">CLUSTER / 01</div>
-            {["node-a", "node-b", "node-c"].map((node, index) => (
+            <div className="home-project__stack-label">RASPBERRY PI CLUSTER</div>
+            {["Compute", "Shared work", "Network"].map((node) => (
               <div className="home-project__node" key={node}>
                 <span className="home-project__node-light" />
                 <span>{node}</span>
-                <span className="home-project__node-chip">PI {String(index + 1).padStart(2, "0")}</span>
+                <span className="home-project__node-chip">QHPC</span>
               </div>
             ))}
             <div className="home-project__stack-foot"><span /> SHARED NETWORK</div>
           </div>
         </div>
         <div className="home-project__copy">
-          <p className="home-section-kicker">A PROJECT IN PROGRESS</p>
+          <SectionLabel>A PROJECT IN PROGRESS</SectionLabel>
           <h2 id="home-project-title">Small boards.<br /><span>Big ideas.</span></h2>
           <p>
             Our Raspberry Pi cluster is a hands-on way to explore the building
@@ -172,7 +175,7 @@ export default function HomePage() {
       <section className="home-contact">
         <div className="home-contact__inner">
           <div>
-            <p className="home-section-kicker">BUILD WITH US</p>
+            <SectionLabel onDark>BUILD WITH US</SectionLabel>
             <h2>Good work takes a team.</h2>
             <p>
               Whether you&apos;re curious about computing or interested in supporting
@@ -180,12 +183,12 @@ export default function HomePage() {
             </p>
           </div>
           <div className="home-contact__actions">
-            <Link href="/contact" className="home-button home-button--primary">
+            <QhpcButtonLink href="/contact" className="home-button">
               Contact QHPC <ArrowRight size={17} aria-hidden="true" />
-            </Link>
-            <Link href="/team" className="home-button home-button--quiet">
+            </QhpcButtonLink>
+            <QhpcButtonLink href="/team" variant="outline" className="home-button">
               Meet the team <ArrowUpRight size={16} aria-hidden="true" />
-            </Link>
+            </QhpcButtonLink>
           </div>
         </div>
       </section>

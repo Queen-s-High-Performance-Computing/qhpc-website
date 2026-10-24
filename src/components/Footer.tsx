@@ -96,53 +96,16 @@ export function Footer() {
             </ul>
           </div>
 
-          {/* Terminal */}
+          {/* Ways to connect */}
           <div>
             <h3 className="text-sm font-heading font-semibold text-text-primary mb-4 uppercase tracking-wider">
-              Quick Links
+              Find us online
             </h3>
-            <div className="terminal text-xs">
-              <div className="terminal-header !py-2">
-                <span className="terminal-dot !w-2 !h-2 bg-terminal-red" />
-                <span className="terminal-dot !w-2 !h-2 bg-terminal-amber" />
-                <span className="terminal-dot !w-2 !h-2 bg-terminal-green" />
-              </div>
-              <div className="p-3 space-y-1 text-text-muted">
-                <p>
-                  <span className="text-terminal-green">$</span>{" "}
-                  <a
-                    href={siteConfig.links.membershipForm}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline"
-                  >
-                    join --membership
-                  </a>
-                </p>
-                <p>
-                  <span className="text-terminal-green">$</span>{" "}
-                  <a
-                    href={siteConfig.links.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline"
-                  >
-                    connect --linkedin
-                  </a>
-                </p>
-                <p>
-                  <span className="text-terminal-green">$</span>{" "}
-                  <a
-                    href="https://www.instagram.com/queenshpc"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:underline"
-                  >
-                    follow --instagram
-                  </a>
-                </p>
-              </div>
-            </div>
+            <ul className="space-y-3">
+              <li><a href={siteConfig.links.membershipForm} target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary hover:text-primary transition-colors">Membership</a></li>
+              <li><a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary hover:text-primary transition-colors">LinkedIn</a></li>
+              <li><a href={siteConfig.links.instagram} target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary hover:text-primary transition-colors">Instagram</a></li>
+            </ul>
           </div>
         </div>
 
@@ -150,11 +113,8 @@ export function Footer() {
         <div className="section-divider mt-12 mb-6" />
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
           <p>
-            © {new Date().getFullYear()} Queen&apos;s High-Performance Computing.
+            © {new Date().getFullYear()}{" "}Queen&apos;s High-Performance Computing.
             All rights reserved.
-          </p>
-          <p className="font-mono flex items-center gap-1.5">
-            Built with <span className="text-terminal-red">❤</span> and HPC
           </p>
         </div>
       </div>

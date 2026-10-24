@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Outfit, JetBrains_Mono } from "next/font/google";
+import { Figtree, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -11,28 +11,22 @@ import { JsonLd } from "@/components/JsonLd";
 import { AEOData } from "@/components/AEOData";
 import { Analytics } from "@vercel/analytics/next";
 
-const inter = Inter({
-  variable: "--font-body",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const outfit = Outfit({
-  variable: "--font-heading",
+const figtree = Figtree({
+  variable: "--font-qhpc",
   subsets: ["latin"],
   display: "swap",
 });
 
 const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-mono",
+  variable: "--font-qhpc-mono",
   subsets: ["latin"],
   display: "swap",
 });
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FFFFFF" },
-    { media: "(prefers-color-scheme: dark)", color: "#0A0E1A" },
+    { media: "(prefers-color-scheme: light)", color: "#F7F9FC" },
+    { media: "(prefers-color-scheme: dark)", color: "#071431" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -52,7 +46,7 @@ export const metadata: Metadata = {
     "Student Cluster Competition Canada",
     "Parallel Programming Club",
     "Frontenac Cluster access",
-    "Queen's Engineering Society Design Team",
+    "Queen's University student club",
   ],
   authors: [{ name: "QHPC Executive Team" }],
   metadataBase: new URL(siteConfig.url),
@@ -122,7 +116,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} h-full antialiased`}
+      className={`${figtree.variable} ${jetbrainsMono.variable} h-full antialiased`}
       suppressHydrationWarning
     >
       <head>
@@ -136,7 +130,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
           <Providers>
             <Navbar />
             <main id="main-content" className="flex-1">{children}</main>
