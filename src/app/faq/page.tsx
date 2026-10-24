@@ -3,11 +3,10 @@ import { Metadata } from "next";
 import { ScrollReveal } from "@/components/ScrollReveal";
 import { FAQContent } from "./FAQContent";
 import { JsonLd } from "@/components/JsonLd";
-import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Frequently Asked Questions",
-  description: "Common questions about joining QHPC, cluster access, time commitments, and supercomputing at Queen's University.",
+  description: "Answers to common questions about learning, activities, and getting involved with QHPC.",
   alternates: {
     canonical: "/faq",
   },
@@ -17,37 +16,27 @@ const faqs = [
   {
     question: "Do I need prior supercomputing (HPC) or Linux experience to join?",
     answer:
-      "No. QHPC welcomes students from all disciplines and skill levels. Our workshops start from the basics, covering Linux fundamentals, shell scripting, and progressively building up to parallel programming and cluster administration.",
+      "No. QHPC's learning materials begin with computer and Linux fundamentals, then build toward shared clusters, parallel computing, and hands-on projects.",
   },
   {
-    question: "What are the time commitments for QHPC members?",
+    question: "How much time should I expect to commit?",
     answer:
-      "Weekly meetings are 2 hours (Wednesdays, 5:30–7:30 PM). Sprint projects require additional self-directed work, approximately 2–4 hours per week. Executive roles require 5–10 hours per week.",
+      "Time commitments vary with the activities and projects you choose. Contact QHPC for current meeting details and expectations.",
   },
   {
-    question: "Are there membership fees for QHPC?",
+    question: "What should I know before joining?",
     answer:
-      "No. All QHPC activities are free for Queen's University students, thanks to our sponsors and grants. Workshops, cluster access, and competition preparation are all included at no cost.",
+      "Get in touch to ask about current activities, membership details, and any resource or access requirements for a project.",
   },
   {
-    question: "How do I get access to the Frontenac Cluster at Queen's?",
+    question: "Do projects use Queen's Frontenac cluster?",
     answer:
-      "After joining QHPC, you will receive instructions to request a Frontenac account through the Centre for Advanced Computing (CAC). QHPC provides a step-by-step guide for SSH access, Slurm job submission, and shared storage usage.",
+      "Some learning materials cover remote computing and cluster job scheduling. Access depends on the activity and the relevant account requirements; contact the club for current guidance.",
   },
   {
-    question: "Does QHPC compete in international Student Cluster Competitions?",
+    question: "Does QHPC take part in Student Cluster Competitions?",
     answer:
-      "Yes, QHPC is building towards competing in the SC Student Cluster Competition (SCC) and IndySCC. We represent Queen's University on the global supercomputing stage.",
-  },
-  {
-    question: "Can graduate students join QHPC?",
-    answer:
-      "Yes. QHPC is open to both undergraduate and graduate students at Queen's University. Graduate students often contribute as mentors and technical leads.",
-  },
-  {
-    question: "What engineering and science disciplines are represented in QHPC?",
-    answer:
-      "QHPC has members from Computer Engineering, Electrical Engineering, Mathematics and Computing, Physics, and Arts & Science programs. Interdisciplinary collaboration is a core value.",
+      "QHPC's learning plan includes practice for cluster competition challenges, including a mock competition activity. Participation in external events depends on team readiness and available opportunities.",
   },
 ];
 

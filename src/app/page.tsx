@@ -6,8 +6,8 @@ import {
   ArrowRight,
   ArrowUpRight,
   Cpu,
+  Gauge,
   Network,
-  Trophy,
 } from "lucide-react";
 import { QhpcButtonLink } from "@/components/ui/QhpcButtonLink";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -16,7 +16,7 @@ import { SurfaceCard } from "@/components/ui/SurfaceCard";
 export const metadata: Metadata = {
   title: "Queen's High Performance Computing Club",
   description:
-    "Meet QHPC, Queen's University's student high-performance computing club. Learn through hands-on projects, workshops, and cluster competitions.",
+    "Meet QHPC, Queen's University's student high-performance computing club. Explore computing systems through hands-on learning and collaborative projects.",
   alternates: {
     canonical: "/",
   },
@@ -26,29 +26,29 @@ const focusAreas = [
   {
     number: "01",
     icon: Cpu,
-    title: "Learn by building",
+    title: "Learn the foundations",
     description:
-      "Get hands-on with Linux, parallel programming, and the hardware behind modern computing.",
+      "Explore Linux, remote computing, schedulers, parallel programming, and the systems behind HPC.",
     href: "/workshops",
-    linkLabel: "Explore workshops",
+    linkLabel: "See how we learn",
   },
   {
     number: "02",
     icon: Network,
-    title: "Make systems work together",
+    title: "Build and connect systems",
     description:
-      "Explore distributed computing through practical team projects, including a Raspberry Pi cluster.",
-    href: "/about",
-    linkLabel: "About our work",
+      "Work through project ideas spanning Raspberry Pi clusters, distributed computing, and benchmarking.",
+    href: "/projects",
+    linkLabel: "Explore project ideas",
   },
   {
     number: "03",
-    icon: Trophy,
-    title: "Take on a challenge",
+    icon: Gauge,
+    title: "Understand performance",
     description:
-      "Prepare for student cluster competitions by building, tuning, and running real workloads as a team.",
-    href: "/competitions",
-    linkLabel: "See competitions",
+      "Explore how hardware, software, and workloads affect the way computing systems perform.",
+    href: "/workshops",
+    linkLabel: "See learning topics",
   },
 ];
 
@@ -92,7 +92,7 @@ export default function HomePage() {
             <p className="home-hero__lede">
               We bring Queen&apos;s students together to explore how powerful
               computing systems are built, programmed, and used — through
-              hands-on projects, workshops, and cluster competitions.
+              hands-on learning and collaborative computing projects.
             </p>
             <div className="home-hero__actions">
               <QhpcButtonLink href="#work" className="home-button">
@@ -102,9 +102,6 @@ export default function HomePage() {
                 Get in touch <ArrowUpRight size={16} aria-hidden="true" />
               </QhpcButtonLink>
             </div>
-            <p className="home-hero__note">
-              The first Engineering Society-ratified supercomputing club at Queen&apos;s.
-            </p>
           </div>
           <ClusterIllustration />
         </div>
@@ -159,15 +156,16 @@ export default function HomePage() {
           </div>
         </div>
         <div className="home-project__copy">
-          <SectionLabel>A PROJECT IN PROGRESS</SectionLabel>
-          <h2 id="home-project-title">Small boards.<br /><span>Big ideas.</span></h2>
+          <SectionLabel>PROJECT IDEAS · 2026–27</SectionLabel>
+          <h2 id="home-project-title">Build systems.<br /><span>Ask better questions.</span></h2>
           <p>
-            Our Raspberry Pi cluster is a hands-on way to explore the building
-            blocks of distributed computing — from connecting machines to
-            coordinating work across them.
+            QHPC&apos;s project ideas range from bringing up a small Raspberry Pi
+            cluster to studying parallel performance, GPU workloads, and
+            reproducible benchmarks. Members can learn by building, measuring,
+            and sharing what they find.
           </p>
-          <Link href="/about" className="home-text-link">
-            More about QHPC <ArrowRight size={15} aria-hidden="true" />
+          <Link href="/projects" className="home-text-link">
+            Browse project ideas <ArrowRight size={15} aria-hidden="true" />
           </Link>
         </div>
       </section>

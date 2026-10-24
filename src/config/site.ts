@@ -2,26 +2,25 @@ export const siteConfig = {
   name: "Queen's High Performance Computing Club",
   shortName: "QHPC",
   description:
-    "QHPC brings Queen's University students together through hands-on high-performance computing projects, workshops, and cluster competitions.",
-  url: "https://qhpc.org", // TODO: Replace with actual domain when deployed
-  ogImage: "https://qhpc.org/og.jpg",
+    "QHPC is Queen's University's student club for high-performance computing, with hands-on learning and collaborative projects.",
+  url: "https://www.qhpc.ca", // Target domain; confirm DNS and ownership before launch.
+  ogImage: "https://www.qhpc.ca/logo.png",
   contact: {
     email: "QHPC@engsoc.queensu.ca",
-    location: "Dunning 10, Queen's University, Kingston, ON",
-    meetingTime: "Wednesdays, 5:30 – 7:30 PM",
+    location: "Queen's University, Kingston, ON",
   },
   links: {
-    github: "https://github.com/queenshpc", // Placeholder, replace if there's a specific repo
+    github: "https://github.com/Queen-s-High-Performance-Computing",
     linkedin: "https://www.linkedin.com/company/queens-high-performance-computing",
     instagram: "https://www.instagram.com/queenshpc",
-    membershipForm: "https://forms.office.com/",
   },
   nav: [
     { title: "Home", href: "/" },
     { title: "About", href: "/about" },
-    { title: "Team", href: "/team" },
     { title: "Workshops", href: "/workshops" },
+    { title: "Projects", href: "/projects" },
     { title: "Competitions", href: "/competitions" },
+    { title: "Team", href: "/team" },
     { title: "Resources", href: "/resources" },
     { title: "FAQ", href: "/faq" },
     { title: "Contact", href: "/contact" },

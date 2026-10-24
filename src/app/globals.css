@@ -1072,6 +1072,10 @@ code, pre, .font-mono {
 .qhpc-button--secondary:hover { background: var(--qhpc-rack); }
 .qhpc-button--outline { color: var(--ink); border-color: var(--line); background: transparent; }
 .qhpc-button--outline:hover { border-color: var(--accent); color: var(--accent); }
+.home-hero .qhpc-button--outline,
+.home-contact .qhpc-button--outline { color: var(--qhpc-ice); border-color: rgba(226, 234, 243, .35); }
+.home-hero .qhpc-button--outline:hover,
+.home-contact .qhpc-button--outline:hover { color: #fff; border-color: var(--qhpc-ice); background: rgba(226, 234, 243, .1); }
 
 .qhpc-nav--home-hero { color: var(--qhpc-ice); }
 .qhpc-nav--home-hero .qhpc-brand-logo span { color: #fff !important; }

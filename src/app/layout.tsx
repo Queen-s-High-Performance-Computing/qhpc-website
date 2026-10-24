@@ -8,7 +8,6 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { siteConfig } from "@/config/site";
 import { JsonLd } from "@/components/JsonLd";
-import { AEOData } from "@/components/AEOData";
 import { Analytics } from "@vercel/analytics/next";
 
 const figtree = Figtree({
@@ -40,13 +39,10 @@ export const metadata: Metadata = {
   description: siteConfig.description,
   keywords: [
     "QHPC",
-    "Queen's University Supercomputing",
-    "High-Performance Computing Queen's",
-    "HPC Workshops Kingston",
-    "Student Cluster Competition Canada",
-    "Parallel Programming Club",
-    "Frontenac Cluster access",
-    "Queen's University student club",
+    "Queen's University high-performance computing club",
+    "HPC projects and workshops",
+    "Parallel and distributed computing",
+    "HPC education and hands-on projects",
   ],
   authors: [{ name: "QHPC Executive Team" }],
   metadataBase: new URL(siteConfig.url),
@@ -92,7 +88,7 @@ export default function RootLayout({
     "alternateName": siteConfig.shortName,
     "description": siteConfig.description,
     "url": siteConfig.url,
-    "logo": "https://qhpc.org/logo.png", // Assuming this path
+    "logo": `${siteConfig.url}/logo.png`,
     "parentOrganization": {
       "@type": "CollegeOrUniversity",
       "name": "Queen's University",
@@ -100,10 +96,8 @@ export default function RootLayout({
     },
     "address": {
       "@type": "PostalAddress",
-      "streetAddress": "Dunning 10",
       "addressLocality": "Kingston",
       "addressRegion": "ON",
-      "postalCode": "K7L 3N6",
       "addressCountry": "CA"
     },
     "sameAs": [
@@ -123,7 +117,6 @@ export default function RootLayout({
         <JsonLd data={organizationData} />
       </head>
       <body className="min-h-full flex flex-col bg-background text-foreground">
-        <AEOData />
         <a 
           href="#main-content" 
           className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:top-4 focus:left-4 focus:p-4 focus:bg-primary focus:text-background focus:rounded-lg focus:font-bold"

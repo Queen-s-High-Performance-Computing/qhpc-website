@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "next/link";
-import { Mail, MapPin, Clock } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
 import { FaLinkedin, FaInstagram } from "react-icons/fa6";
 import { QHPCLogo } from "./QHPCLogo";
 import { siteConfig } from "@/config/site";
@@ -15,8 +15,8 @@ export function Footer() {
           <div className="lg:col-span-1">
             <QHPCLogo size={32} />
             <p className="mt-4 text-sm text-text-secondary leading-relaxed">
-              The first Engineering Society‑ratified supercomputing club at
-              Queen&apos;s University. Building Canada&apos;s next generation of HPC talent.
+              Queen&apos;s University&apos;s student club for high-performance
+              computing, hands-on learning, and collaborative projects.
             </p>
             <div className="flex items-center gap-3 mt-6">
               <a
@@ -89,10 +89,6 @@ export function Footer() {
                   {siteConfig.contact.location.split(',').slice(1).join(',').trim()}
                 </span>
               </li>
-              <li className="flex items-start gap-2 text-sm text-text-secondary">
-                <Clock size={16} className="mt-0.5 text-primary shrink-0" />
-                <span>{siteConfig.contact.meetingTime}</span>
-              </li>
             </ul>
           </div>
 
@@ -102,7 +98,7 @@ export function Footer() {
               Find us online
             </h3>
             <ul className="space-y-3">
-              <li><a href={siteConfig.links.membershipForm} target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary hover:text-primary transition-colors">Membership</a></li>
+              <li><Link href="/contact" className="text-sm text-text-secondary hover:text-primary transition-colors">Membership questions</Link></li>
               <li><a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary hover:text-primary transition-colors">LinkedIn</a></li>
               <li><a href={siteConfig.links.instagram} target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary hover:text-primary transition-colors">Instagram</a></li>
             </ul>
