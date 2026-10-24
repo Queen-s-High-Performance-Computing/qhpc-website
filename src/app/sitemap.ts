@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/resources",
     "/faq",
     "/contact",
+    "/join",
+    "/sponsors",
   ].map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: new Date().toISOString().split("T")[0],

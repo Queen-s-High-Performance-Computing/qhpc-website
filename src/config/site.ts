@@ -3,8 +3,10 @@ export const siteConfig = {
   shortName: "QHPC",
   description:
     "QHPC is Queen's University's student club for high-performance computing, with hands-on learning and collaborative projects.",
-  url: "https://www.qhpc.ca", // Target domain; confirm DNS and ownership before launch.
-  ogImage: "https://www.qhpc.ca/logo.png",
+  // Override at deployment when the canonical domain is confirmed.
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.qhpc.ca").replace(/\/$/, ""),
+  // Use the club-branded server-room artwork for social previews, rather than a bare logo.
+  ogImage: "/qhpc-server-racks.png",
   contact: {
     email: "QHPC@engsoc.queensu.ca",
     location: "Queen's University, Kingston, ON",
@@ -14,6 +16,14 @@ export const siteConfig = {
     linkedin: "https://www.linkedin.com/company/queens-high-performance-computing",
     instagram: "https://www.instagram.com/queenshpc",
   },
+  primaryNav: [
+    { title: "About", href: "/about" },
+    { title: "Learning", href: "/workshops" },
+    { title: "Projects", href: "/projects" },
+    { title: "Competitions", href: "/competitions" },
+    { title: "Team", href: "/team" },
+    { title: "Sponsors", href: "/sponsors" },
+  ],
   nav: [
     { title: "Home", href: "/" },
     { title: "About", href: "/about" },
@@ -24,5 +34,7 @@ export const siteConfig = {
     { title: "Resources", href: "/resources" },
     { title: "FAQ", href: "/faq" },
     { title: "Contact", href: "/contact" },
+    { title: "How to join", href: "/join" },
+    { title: "Sponsors", href: "/sponsors" },
   ],
 };

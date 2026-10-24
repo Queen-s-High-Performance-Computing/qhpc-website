@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Activity, BarChart3, Cpu, Image, Network, Repeat2, Server, Workflow } from "lucide-react";
+import { Activity, BarChart3, Cpu, Network, Repeat2, Server, Workflow } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SurfaceCard } from "@/components/ui/SurfaceCard";
 
@@ -10,25 +10,25 @@ export const metadata: Metadata = {
 };
 
 const projectIdeas = [
-  { icon: Activity, title: "OpenMP scaling and bottlenecks", description: "Measure how a shared-memory program responds to additional CPU threads and identify where performance stops scaling." },
-  { icon: Network, title: "MPI placement and scaling", description: "Explore how process placement and communication affect distributed workloads." },
-  { icon: BarChart3, title: "HPL and HPCG benchmarks", description: "Use established benchmarks to study what different measures of system performance reveal." },
-  { icon: Cpu, title: "GPU workloads and inference", description: "Investigate how hardware and workload choices affect accelerated computing and model inference." },
-  { icon: Image, title: "Large image batch processing", description: "Design a parallel workflow for processing a collection of images and compare its behavior as the work grows." },
-  { icon: Server, title: "Raspberry Pi cluster bring-up", description: "Connect small computers into a cluster and learn about the network and software layers that make it work." },
-  { icon: Workflow, title: "A reusable benchmark harness", description: "Build repeatable tools for running workloads, collecting measurements, and comparing configurations." },
-  { icon: Repeat2, title: "Reproducing an HPC result", description: "Recreate a published computational result and document the steps and conditions needed to reproduce it." },
+  { icon: Cpu, title: "CPU-only AI inference", description: "Compare ways to run language-model workloads on CPUs, looking at throughput, latency, and energy use." },
+  { icon: BarChart3, title: "Model size and quantization", description: "Explore how reducing model precision can change memory needs, response quality, and inference speed." },
+  { icon: Network, title: "A small retrieval system", description: "Build a local search-and-answer prototype and evaluate how well it finds relevant material." },
+  { icon: Activity, title: "Energy-aware scheduling", description: "Use simulation to explore how scheduling choices could respond to changing workload and energy conditions." },
+  { icon: Workflow, title: "OpenMP scaling and bottlenecks", description: "Measure how a shared-memory program responds to additional CPU threads and where performance stops scaling." },
+  { icon: Network, title: "MPI placement and scaling", description: "Explore how process placement and communication affect a distributed workload." },
+  { icon: Server, title: "A small cluster bring-up", description: "Connect small computers and learn about the networking and software layers that make a cluster work." },
+  { icon: Repeat2, title: "A reusable benchmark workflow", description: "Create repeatable steps for running workloads, collecting measurements, and comparing configurations." },
 ];
 
 export default function ProjectsPage() {
   return (
-    <main className="pt-20">
+    <div className="pt-20">
       <section className="py-20 grid-bg">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <SectionLabel>LEARN · BUILD · MEASURE</SectionLabel>
           <h1 className="text-4xl sm:text-5xl font-heading font-bold text-text-primary mb-6">Projects at QHPC</h1>
           <p className="text-lg text-text-secondary leading-relaxed max-w-3xl">
-            High-performance computing spans hardware, software, and the questions we can ask with them. QHPC&apos;s 2026–27 planning materials collect project ideas members can explore in small teams, from building a cluster to measuring parallel performance.
+            High-performance computing spans hardware, software, and the questions we can ask with them. These examples range from small software studies to distributed-systems experiments. Each is a possible direction that interested students could shape into a project.
           </p>
         </div>
       </section>
@@ -39,13 +39,14 @@ export default function ProjectsPage() {
             {projectIdeas.map(({ icon: Icon, title, description }) => (
               <SurfaceCard key={title} className="p-6">
                 <span className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary"><Icon size={21} aria-hidden="true" /></span>
+                <span className="mb-3 inline-flex w-fit rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-primary">Idea to explore</span>
                 <h2 className="mb-2 text-lg font-heading font-semibold text-text-primary">{title}</h2>
                 <p className="text-sm leading-relaxed text-text-secondary">{description}</p>
               </SurfaceCard>
             ))}
           </div>
           <p className="mt-8 max-w-3xl text-sm leading-relaxed text-text-muted">
-            These are project directions from the 2026–27 planning materials, not a claim that every project is currently underway. Scope and timing depend on member interest, available equipment, and access to computing resources.
+            These are ideas, not a list of active or completed projects. A project&apos;s scope and timing would depend on member interest, equipment, and access to computing resources. Ask QHPC about current activities.
           </p>
         </div>
       </section>
@@ -60,6 +61,6 @@ export default function ProjectsPage() {
           <a href="https://github.com/Queen-s-High-Performance-Computing/qhpc-meetings" target="_blank" rel="noopener noreferrer" className="qhpc-button qhpc-button--outline">Explore meeting guides</a>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

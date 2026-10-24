@@ -12,6 +12,7 @@ import {
 import { QhpcButtonLink } from "@/components/ui/QhpcButtonLink";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SurfaceCard } from "@/components/ui/SurfaceCard";
+import { ExplodedClusterExperience } from "@/components/home/ExplodedClusterExperience";
 
 export const metadata: Metadata = {
   title: "Queen's High Performance Computing Club",
@@ -140,40 +141,12 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="home-project grid-bg" aria-labelledby="home-project-title">
-        <div className="home-project__visual" aria-hidden="true">
-          <div className="home-project__halo" />
-          <div className="home-project__stack">
-            <div className="home-project__stack-label">RASPBERRY PI CLUSTER</div>
-            {["Compute", "Shared work", "Network"].map((node) => (
-              <div className="home-project__node" key={node}>
-                <span className="home-project__node-light" />
-                <span>{node}</span>
-                <span className="home-project__node-chip">QHPC</span>
-              </div>
-            ))}
-            <div className="home-project__stack-foot"><span /> SHARED NETWORK</div>
-          </div>
-        </div>
-        <div className="home-project__copy">
-          <SectionLabel>PROJECT IDEAS · 2026–27</SectionLabel>
-          <h2 id="home-project-title">Build systems.<br /><span>Ask better questions.</span></h2>
-          <p>
-            QHPC&apos;s project ideas range from bringing up a small Raspberry Pi
-            cluster to studying parallel performance, GPU workloads, and
-            reproducible benchmarks. Members can learn by building, measuring,
-            and sharing what they find.
-          </p>
-          <Link href="/projects" className="home-text-link">
-            Browse project ideas <ArrowRight size={15} aria-hidden="true" />
-          </Link>
-        </div>
-      </section>
+      <ExplodedClusterExperience />
 
       <section className="home-contact">
         <div className="home-contact__inner">
           <div>
-            <SectionLabel onDark>BUILD WITH US</SectionLabel>
+            <SectionLabel>BUILD WITH US</SectionLabel>
             <h2>Good work takes a team.</h2>
             <p>
               Whether you&apos;re curious about computing or interested in supporting
@@ -184,8 +157,8 @@ export default function HomePage() {
             <QhpcButtonLink href="/contact" className="home-button">
               Contact QHPC <ArrowRight size={17} aria-hidden="true" />
             </QhpcButtonLink>
-            <QhpcButtonLink href="/team" variant="outline" className="home-button">
-              Meet the team <ArrowUpRight size={16} aria-hidden="true" />
+            <QhpcButtonLink href="/join" variant="outline" className="home-button">
+              How to join <ArrowUpRight size={16} aria-hidden="true" />
             </QhpcButtonLink>
           </div>
         </div>

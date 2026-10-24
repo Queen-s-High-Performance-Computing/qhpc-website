@@ -17,13 +17,13 @@ const preparation = [
 
 export default function CompetitionsPage() {
   return (
-    <main className="pt-20">
+    <div className="pt-20">
       <section className="py-20 grid-bg">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <SectionLabel>LEARN · PRACTISE · COMPETE</SectionLabel>
           <h1 className="text-4xl sm:text-5xl font-heading font-bold text-text-primary mb-6">Student cluster competitions</h1>
           <p className="text-lg text-text-secondary leading-relaxed max-w-3xl">
-            Student Cluster Competitions challenge teams to build, configure, and tune computing systems while solving workload and benchmark tasks. QHPC develops the systems and parallel-computing skills that help students prepare for these challenges.
+            Student Cluster Competitions challenge teams to build, configure, and tune computing systems while solving workload and benchmark tasks. This page introduces the skills involved; it is not an announcement that QHPC has entered a competition.
           </p>
         </div>
       </section>
@@ -33,7 +33,7 @@ export default function CompetitionsPage() {
           <div className="mb-10 max-w-3xl">
             <SectionLabel>WHAT THE CHALLENGE CAN INVOLVE</SectionLabel>
             <h2 className="text-2xl font-heading font-semibold text-text-primary">Computing is a team sport.</h2>
-            <p className="mt-3 text-sm leading-relaxed text-text-secondary">These challenges bring together systems knowledge, workload tuning, and teamwork. Contact QHPC for current information about club activities and competition participation.</p>
+            <p className="mt-3 text-sm leading-relaxed text-text-secondary">These challenges bring together systems knowledge, workload tuning, and teamwork. Ask QHPC for the latest information about competition plans and related activities.</p>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
             {preparation.map(({ icon: Icon, title, description }) => (
@@ -54,6 +54,6 @@ export default function CompetitionsPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

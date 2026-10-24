@@ -70,7 +70,7 @@ function TeamSection({ title, people, columns }: { title: string; people: Person
 
 export default function TeamPage() {
   return (
-    <main className="pt-20">
+    <div className="pt-20">
       <section className="py-20 grid-bg">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <SectionLabel>QUEEN&apos;S UNIVERSITY · STUDENT CLUB</SectionLabel>
@@ -88,6 +88,6 @@ export default function TeamPage() {
           <TeamSection title="Advisors" people={advisors} columns="sm:grid-cols-2" />
         </div>
       </div>
-    </main>
+    </div>
   );
 }

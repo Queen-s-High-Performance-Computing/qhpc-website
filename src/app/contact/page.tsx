@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { ArrowUpRight, Handshake, Mail } from "lucide-react";
 import { FaInstagram, FaLinkedin } from "react-icons/fa6";
 import { SectionLabel } from "@/components/ui/SectionLabel";
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   return (
-    <main className="pt-20">
+    <div className="pt-20">
       <section className="py-20 grid-bg">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <SectionLabel>QUESTIONS · MEMBERSHIP · PARTNERSHIPS</SectionLabel>
@@ -49,12 +50,12 @@ export default function ContactPage() {
             <SectionLabel>SPONSORSHIP AND PARTNERSHIPS</SectionLabel>
             <h2 className="text-2xl font-heading font-semibold text-text-primary">Support hands-on computing at Queen&apos;s.</h2>
             <p className="mt-3 max-w-3xl text-sm leading-relaxed text-text-secondary">
-              We&apos;re glad to hear from organizations interested in supporting student learning, computing projects, and opportunities to connect students with the HPC community. Get in touch to start a conversation.
+              We welcome conversations with organizations interested in student learning, computing projects, and connecting students with the HPC community.
             </p>
-            <a href={`mailto:${siteConfig.contact.email}?subject=QHPC%20Partnership`} className="qhpc-button qhpc-button--primary mt-6">Contact us <ArrowUpRight size={15} aria-hidden="true" /></a>
+            <Link href="/sponsors" className="qhpc-button qhpc-button--primary mt-6">Explore partnerships <ArrowUpRight size={15} aria-hidden="true" /></Link>
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

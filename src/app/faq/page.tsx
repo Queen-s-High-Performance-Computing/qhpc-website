@@ -29,6 +29,21 @@ const faqs = [
       "Get in touch to ask about current activities, membership details, and any resource or access requirements for a project.",
   },
   {
+    question: "How do I get involved with QHPC?",
+    answer:
+      "Email QHPC to ask about current membership steps and upcoming meetings. You do not need prior HPC or Linux experience to get started.",
+  },
+  {
+    question: "Are the projects on this website underway?",
+    answer:
+      "The projects page presents ideas to explore. It does not claim those ideas are active or completed projects. Contact QHPC for current activities.",
+  },
+  {
+    question: "How can an organization discuss supporting QHPC?",
+    answer:
+      "Organizations can email QHPC to start a conversation about student learning, computing resources, mentorship, or other possible partnership topics. No specific sponsor benefits or funding requests are promised on this site.",
+  },
+  {
     question: "Do projects use Queen's Frontenac cluster?",
     answer:
       "Some learning materials cover remote computing and cluster job scheduling. Access depends on the activity and the relevant account requirements; contact the club for current guidance.",
@@ -36,7 +51,7 @@ const faqs = [
   {
     question: "Does QHPC take part in Student Cluster Competitions?",
     answer:
-      "QHPC's learning plan includes practice for cluster competition challenges, including a mock competition activity. Participation in external events depends on team readiness and available opportunities.",
+      "This website does not announce a QHPC entry in an external competition. Email the club for current information about 2026–27 competition plans and related learning activities.",
   },
 ];
 
@@ -63,7 +78,7 @@ export default function FAQPage() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <ScrollReveal>
             <p className="text-sm font-mono text-primary mb-3 uppercase tracking-widest">
-              // man qhpc --help
+              {"// man qhpc --help"}
             </p>
             <h1 className="text-4xl sm:text-5xl font-heading font-bold text-text-primary mb-6">
               Frequently Asked Questions

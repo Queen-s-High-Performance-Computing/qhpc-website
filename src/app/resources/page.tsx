@@ -31,7 +31,7 @@ const resources = [
 
 export default function ResourcesPage() {
   return (
-    <main className="pt-20">
+    <div className="pt-20">
       <section className="py-20 grid-bg">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <SectionLabel>GUIDES · PROJECTS · REFERENCES</SectionLabel>
@@ -60,6 +60,6 @@ export default function ResourcesPage() {
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }

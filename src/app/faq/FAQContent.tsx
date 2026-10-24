@@ -5,6 +5,7 @@ import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDown, HelpCircle, Search, X } from "lucide-react";
 import { ScrollReveal, StaggerContainer, StaggerItem } from "@/components/ScrollReveal";
 import Fuse from "fuse.js";
+import { siteConfig } from "@/config/site";
 
 interface FAQ {
   question: string;
@@ -39,13 +40,15 @@ export function FAQContent({ faqs }: { faqs: FAQ[] }) {
             </div>
             <input
               type="text"
-              placeholder="Search cluster FAQ (e.g. 'Linux', 'Fees', 'CAC')..."
+              aria-label="Search frequently asked questions"
+              placeholder="Search questions (e.g. Linux, membership, projects)"
               className="block w-full bg-surface/50 border border-border rounded-2xl py-4 pl-12 pr-12 text-sm text-text-primary placeholder:text-text-muted focus:bg-surface focus:border-primary/50 focus:ring-4 focus:ring-primary/5 outline-none transition-all"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
             {searchQuery && (
               <button
+                aria-label="Clear FAQ search"
                 onClick={() => setSearchQuery("")}
                 className="absolute inset-y-0 right-0 pr-4 flex items-center text-text-muted hover:text-text-primary transition-colors"
               >
@@ -57,8 +60,8 @@ export function FAQContent({ faqs }: { faqs: FAQ[] }) {
 
         {/* Result count */}
         {searchQuery && (
-          <p className="text-xs font-mono text-text-muted mb-6 px-2">
-            Found {filteredFaqs.length} results for &quot;{searchQuery}&quot;
+          <p role="status" aria-live="polite" className="text-xs font-mono text-text-muted mb-6 px-2">
+            Found {filteredFaqs.length} {filteredFaqs.length === 1 ? "result" : "results"} for &quot;{searchQuery}&quot;
           </p>
         )}
 
@@ -97,12 +100,12 @@ export function FAQContent({ faqs }: { faqs: FAQ[] }) {
           ) : (
             <div className="text-center py-20 p-8 glass rounded-2xl border border-border">
               <Search size={32} className="text-text-muted mx-auto mb-4 opacity-20" />
-              <p className="text-text-secondary">No results found in the cluster database.</p>
+              <p className="text-text-secondary">No questions match that search.</p>
               <button
                 onClick={() => setSearchQuery("")}
-                className="mt-4 text-primary text-sm font-mono hover:underline"
+                className="mt-4 text-primary text-sm font-medium hover:underline"
               >
-                $ clear_search
+                Clear search
               </button>
             </div>
           )}
@@ -119,10 +122,10 @@ export function FAQContent({ faqs }: { faqs: FAQ[] }) {
               Reach out to us directly — we&apos;re happy to help!
             </p>
             <a
-              href="mailto:QHPC@engsoc.queensu.ca"
+              href={`mailto:${siteConfig.contact.email}`}
               className="inline-flex items-center gap-2 px-6 py-2.5 bg-primary/10 text-primary border border-primary/30 rounded-lg font-mono text-sm hover:bg-primary/20 transition-all"
             >
-              $ mail QHPC@engsoc.queensu.ca
+              Email QHPC
             </a>
           </div>
         </ScrollReveal>

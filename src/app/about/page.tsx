@@ -18,7 +18,7 @@ const pillars = [
 
 export default function AboutPage() {
   return (
-    <main className="pt-20">
+    <div className="pt-20">
       <section className="py-20 grid-bg">
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <SectionLabel>QUEEN&apos;S UNIVERSITY · STUDENT CLUB</SectionLabel>
@@ -51,19 +51,22 @@ export default function AboutPage() {
             <p className="mt-3 text-sm leading-relaxed text-text-secondary">
               Learning materials cover the command line and version control, remote access and job scheduling, parallel workloads, benchmarking, reproducible experiments, and small cluster systems. Project ideas let members apply those foundations in practice.
             </p>
-            <Link href="/workshops" className="home-text-link mt-5">Explore the learning path <ArrowRight size={15} aria-hidden="true" /></Link>
+            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
+              <Link href="/workshops" className="home-text-link">Explore the learning path <ArrowRight size={15} aria-hidden="true" /></Link>
+              <Link href="/join" className="home-text-link">How to join <ArrowRight size={15} aria-hidden="true" /></Link>
+            </div>
           </div>
           <div className="rounded-2xl border border-border bg-surface-raised p-6 sm:p-8">
             <Handshake size={24} className="mb-4 text-primary" aria-hidden="true" />
             <SectionLabel>FOR PARTNERS AND SUPPORTERS</SectionLabel>
             <h2 className="text-xl font-heading font-semibold text-text-primary">Help students explore computing.</h2>
             <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-              We welcome conversations with organizations interested in supporting student learning, practical computing projects, and the next generation of HPC talent.
+              We welcome conversations with organizations interested in supporting student learning and practical computing exploration.
             </p>
-            <Link href="/contact" className="home-text-link mt-5">Get in touch <ArrowRight size={15} aria-hidden="true" /></Link>
+            <Link href="/sponsors" className="home-text-link mt-5">Explore partnerships <ArrowRight size={15} aria-hidden="true" /></Link>
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
