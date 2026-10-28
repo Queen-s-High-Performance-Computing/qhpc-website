@@ -13,6 +13,7 @@ import { QhpcButtonLink } from "@/components/ui/QhpcButtonLink";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SurfaceCard } from "@/components/ui/SurfaceCard";
 import { ExplodedClusterExperience } from "@/components/home/ExplodedClusterExperience";
+import { CssicPartnershipFeature } from "@/components/CssicPartnershipFeature";
 
 export const metadata: Metadata = {
   title: "Queen's High Performance Computing Club",
@@ -142,6 +143,10 @@ export default function HomePage() {
       </section>
 
       <ExplodedClusterExperience />
+
+      <div className="cssic-feature-wrap">
+        <CssicPartnershipFeature />
+      </div>
 
       <section className="home-contact">
         <div className="home-contact__inner">

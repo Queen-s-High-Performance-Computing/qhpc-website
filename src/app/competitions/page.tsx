@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BarChart3, Network, Server, Trophy } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SurfaceCard } from "@/components/ui/SurfaceCard";
+import { CssicPartnershipFeature } from "@/components/CssicPartnershipFeature";
 
 export const metadata: Metadata = {
   title: "Competitions",
@@ -23,8 +24,14 @@ export default function CompetitionsPage() {
           <SectionLabel>LEARN · PRACTISE · COMPETE</SectionLabel>
           <h1 className="text-4xl sm:text-5xl font-heading font-bold text-text-primary mb-6">Student cluster competitions</h1>
           <p className="text-lg text-text-secondary leading-relaxed max-w-3xl">
-            Student Cluster Competitions challenge teams to build, configure, and tune computing systems while solving workload and benchmark tasks. This page introduces the skills involved; it is not an announcement that QHPC has entered a competition.
+            Student cluster competitions bring together hardware, systems, and workload skills. QHPC is working with CSSIC to develop an affiliated group for students interested in semiconductor hardware engineering, with the goal of attending and competing at the January 21, 2027 conference in Ottawa. Planning is underway, and details will take shape as the collaboration develops.
           </p>
+        </div>
+      </section>
+
+      <section className="py-10 sm:py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <CssicPartnershipFeature />
         </div>
       </section>
 

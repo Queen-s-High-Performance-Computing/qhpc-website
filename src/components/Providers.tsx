@@ -5,7 +5,16 @@ import { Toaster } from "react-hot-toast";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ReactLenis root options={{ autoRaf: true }}>
+    <ReactLenis
+      root
+      options={{
+        autoRaf: true,
+        anchors: true,
+        lerp: 0.18,
+        wheelMultiplier: 1.12,
+        stopInertiaOnNavigate: true,
+      }}
+    >
       {children as any}
       <Toaster
         position="bottom-right"
