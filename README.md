@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# QHPC Website
 
-## Getting Started
+Public website for Queen's High Performance Computing Club, built with Next.js, React, and TypeScript.
 
-First, run the development server:
+## Development
+
+Install Node.js and npm, then run:
 
 ```bash
+npm ci
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open http://localhost:3000. Use `npm run lint` to check code and `npm run build` to verify the production build. Commit both `package.json` and `package-lock.json` when dependencies change.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Where to edit
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/`: pages and layouts; the homepage is `src/app/page.tsx`.
+- `src/content/`: editable content in `news.ts`, `team.ts`, `workshops.ts`, and `projects.ts`. Keep layout and styling in components.
+- `src/components/`: shared components; `home/` contains homepage components and `ui/` contains reusable visual elements.
+- `src/config/site.ts`: site identity, navigation, contact details, and social links.
+- `public/`: images and other static assets.
 
-## Learn More
+Set `NEXT_PUBLIC_SITE_URL` in `.env.local` to override the canonical site URL; otherwise it defaults to `https://www.qhpc.ca`.
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [AGENTS.md](AGENTS.md) for coding-agent guidance.

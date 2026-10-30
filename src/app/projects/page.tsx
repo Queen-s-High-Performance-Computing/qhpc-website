@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Activity, BarChart3, Cpu, Network, Repeat2, Server, Workflow } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SurfaceCard } from "@/components/ui/SurfaceCard";
+import { projectIdeas } from "@/content/projects";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -9,16 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/projects" },
 };
 
-const projectIdeas = [
-  { icon: Cpu, title: "CPU-only AI inference", description: "Compare ways to run language-model workloads on CPUs, looking at throughput, latency, and energy use." },
-  { icon: BarChart3, title: "Model size and quantization", description: "Explore how reducing model precision can change memory needs, response quality, and inference speed." },
-  { icon: Network, title: "A small retrieval system", description: "Build a local search-and-answer prototype and evaluate how well it finds relevant material." },
-  { icon: Activity, title: "Energy-aware scheduling", description: "Use simulation to explore how scheduling choices could respond to changing workload and energy conditions." },
-  { icon: Workflow, title: "OpenMP scaling and bottlenecks", description: "Measure how a shared-memory program responds to additional CPU threads and where performance stops scaling." },
-  { icon: Network, title: "MPI placement and scaling", description: "Explore how process placement and communication affect a distributed workload." },
-  { icon: Server, title: "A small cluster bring-up", description: "Connect small computers and learn about the networking and software layers that make a cluster work." },
-  { icon: Repeat2, title: "A reusable benchmark workflow", description: "Create repeatable steps for running workloads, collecting measurements, and comparing configurations." },
-];
+const projectIcons = { Activity, BarChart3, Cpu, Network, Repeat2, Server, Workflow };
 
 export default function ProjectsPage() {
   return (
@@ -36,14 +28,18 @@ export default function ProjectsPage() {
       <section className="py-16 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {projectIdeas.map(({ icon: Icon, title, description }) => (
-              <SurfaceCard key={title} className="p-6">
-                <span className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary"><Icon size={21} aria-hidden="true" /></span>
-                <span className="mb-3 inline-flex w-fit rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-primary">Idea to explore</span>
-                <h2 className="mb-2 text-lg font-heading font-semibold text-text-primary">{title}</h2>
-                <p className="text-sm leading-relaxed text-text-secondary">{description}</p>
-              </SurfaceCard>
-            ))}
+            {projectIdeas.map(({ icon, title, description }) => {
+              const Icon = projectIcons[icon];
+
+              return (
+                <SurfaceCard key={title} className="p-6">
+                  <span className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary"><Icon size={21} aria-hidden="true" /></span>
+                  <span className="mb-3 inline-flex w-fit rounded-full border border-primary/20 bg-primary/10 px-2.5 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.12em] text-primary">Idea to explore</span>
+                  <h2 className="mb-2 text-lg font-heading font-semibold text-text-primary">{title}</h2>
+                  <p className="text-sm leading-relaxed text-text-secondary">{description}</p>
+                </SurfaceCard>
+              );
+            })}
           </div>
           <p className="mt-8 max-w-3xl text-sm leading-relaxed text-text-muted">
             These are ideas, not a list of active or completed projects. A project&apos;s scope and timing would depend on member interest, equipment, and access to computing resources. Ask QHPC about current activities.

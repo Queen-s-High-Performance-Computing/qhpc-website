@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SurfaceCard } from "@/components/ui/SurfaceCard";
+import { advisors, coPresidents, directors, type Person } from "@/content/team";
 
 export const metadata: Metadata = {
   title: "2026–27 Executive Team",
@@ -9,30 +10,11 @@ export const metadata: Metadata = {
   alternates: { canonical: "/team" },
 };
 
-const directors = [
-  { name: "Charlie Bolt", role: "Technical Director", program: "Computer Engineering · 5th Year+", image: "charlie-bolt.png" },
-  { name: "Daniil Nistribenko", role: "Director of Research", program: "Electrical Engineering · 4th Year", image: "daniil-nistribenko.png" },
-  { name: "Aaron Lin", role: "Director of Projects", program: "Electrical Engineering · 3rd Year", image: "aaron-lin.png" },
-  { name: "Lucas Yaskowich", role: "Director of Curriculum & Education", program: "Computing (Security) & Math · 2nd Year", image: "lucas-yaskowich.png" },
-  { name: "Christina Le", role: "Director of Outreach", program: "Computer Engineering · 2nd Year", image: "christina-le.png" },
-];
-
-const coPresidents = [
-  { name: "Alexandra Kaine", role: "Co-President", image: "alexandra-kaine.png", portraitClassName: "scale-[1.25] -translate-y-[5%]" },
-  { name: "Anthony Botticchio", role: "Co-President", image: "anthony-botticchio.png", portraitClassName: "scale-[1.4] -translate-x-[9%] -translate-y-[5%]" },
-];
-
-const advisors = [
-  { name: "Curtis Shorts", role: "Student Advisor", image: "curtis-shorts.png", portraitClassName: "scale-[1.22] -translate-y-[4%]" },
-  { name: "Dr. Ryan Grant", role: "Faculty Advisor", image: "ryan-grant.png", portraitClassName: "scale-[1.22] -translate-y-[4%]" },
-];
-
-type Person = {
-  name: string;
-  role: string;
-  image: string;
-  program?: string;
-  portraitClassName?: string;
+const portraitClasses: Record<string, string> = {
+  "alexandra-kaine.png": "scale-[1.25] -translate-y-[5%]",
+  "anthony-botticchio.png": "scale-[1.4] -translate-x-[9%] -translate-y-[5%]",
+  "curtis-shorts.png": "scale-[1.22] -translate-y-[4%]",
+  "ryan-grant.png": "scale-[1.22] -translate-y-[4%]",
 };
 
 function PersonCard({ person }: { person: Person }) {
@@ -45,7 +27,7 @@ function PersonCard({ person }: { person: Person }) {
           alt={`Portrait of ${person.name}`}
           width={192}
           height={192}
-          className={`h-full w-full object-cover object-center ${person.portraitClassName ?? "scale-[1.16]"}`}
+          className={`h-full w-full object-cover object-center ${portraitClasses[person.image] ?? "scale-[1.16]"}`}
         />
       </div>
       <h3 className="text-lg font-heading font-semibold text-text-primary">{person.name}</h3>

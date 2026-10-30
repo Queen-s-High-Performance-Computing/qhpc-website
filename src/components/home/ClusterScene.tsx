@@ -6,6 +6,7 @@ import { Edges, Html, OrbitControls } from "@react-three/drei";
 import * as THREE from "three";
 import type { MotionValue } from "framer-motion";
 import type { ReactNode } from "react";
+import { useThreeTimer } from "@/hooks/useThreeTimer";
 
 export type ClusterComponentId = "compute" | "interconnect" | "storage" | "services";
 
@@ -891,10 +892,14 @@ function ServerNicModel() {
 
 function InspectionScene({ parts, onSelect }: { parts: Array<{ id: string; title: string; interactive: boolean }>; onSelect: (id: string) => void }) {
   const group = useRef<THREE.Group>(null);
-  useFrame((state, delta) => {
-    if (!group.current) return;
+  const timer = useThreeTimer();
+  useFrame(() => {
+    if (!group.current || !timer.current) return;
+    timer.current.update();
+    const time = timer.current.getElapsed();
+    const delta = timer.current.getDelta();
     group.current.scale.setScalar(THREE.MathUtils.damp(group.current.scale.x, 1, 4, delta));
-    group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, Math.sin(state.clock.elapsedTime * .25) * .035, 2, delta);
+    group.current.rotation.y = THREE.MathUtils.damp(group.current.rotation.y, Math.sin(time * .25) * .035, 2, delta);
   });
   return (
     <group ref={group} scale={.01}>

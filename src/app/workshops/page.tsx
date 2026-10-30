@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { BookOpen, Boxes, Cpu, ExternalLink, GitBranch, Network, Server, Terminal } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SurfaceCard } from "@/components/ui/SurfaceCard";
+import { learningAreas, publishedGuides } from "@/content/workshops";
 
 export const metadata: Metadata = {
   title: "Workshops and Learning",
@@ -9,27 +10,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/workshops" },
 };
 
-const learningAreas = [
-  { icon: Terminal, title: "Linux and development tools", description: "Build confidence with the command line, Git, compilers, libraries, and software environments." },
-  { icon: Network, title: "Remote computing", description: "Learn how SSH connects your computer to shared systems and how to work safely in a remote environment." },
-  { icon: Server, title: "Clusters and job scheduling", description: "Understand nodes, shared resources, and how Slurm schedules work on a cluster." },
-  { icon: Cpu, title: "Parallel computing", description: "Explore CPUs, GPUs, processes, threads, shared-memory programming, and distributed workloads." },
-  { icon: Boxes, title: "Applications and systems", description: "Connect computing concepts to real workloads, containers, virtual machines, and small cluster projects." },
-  { icon: GitBranch, title: "Performance and reproducibility", description: "Practice benchmarking, profiling, experiment design, debugging, and documenting results." },
-];
-
-const publishedGuides = [
-  {
-    title: "Linux, VMs and containers",
-    description: "Terminal basics, Linux environments, containers, local Kubernetes clusters, Ansible, and Proxmox labs.",
-    href: "https://github.com/Queen-s-High-Performance-Computing/qhpc-meetings/tree/main/03-linux-vms-and-containers",
-  },
-  {
-    title: "SSH and Slurm on the CAC",
-    description: "Configure SSH, edit a job script, submit it to the scheduler, and inspect its output.",
-    href: "https://github.com/Queen-s-High-Performance-Computing/qhpc-meetings/tree/main/04-ssh-and-slurm",
-  },
-];
+const learningAreaIcons = { Boxes, Cpu, GitBranch, Network, Server, Terminal };
 
 export default function WorkshopsPage() {
   return (
@@ -54,13 +35,17 @@ export default function WorkshopsPage() {
             </div>
           </div>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {learningAreas.map(({ icon: Icon, title, description }) => (
-              <SurfaceCard key={title} className="p-6">
-                <span className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary"><Icon size={21} aria-hidden="true" /></span>
-                <h3 className="mb-2 text-lg font-heading font-semibold text-text-primary">{title}</h3>
-                <p className="text-sm leading-relaxed text-text-secondary">{description}</p>
-              </SurfaceCard>
-            ))}
+            {learningAreas.map(({ icon, title, description }) => {
+              const Icon = learningAreaIcons[icon];
+
+              return (
+                <SurfaceCard key={title} className="p-6">
+                  <span className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary"><Icon size={21} aria-hidden="true" /></span>
+                  <h3 className="mb-2 text-lg font-heading font-semibold text-text-primary">{title}</h3>
+                  <p className="text-sm leading-relaxed text-text-secondary">{description}</p>
+                </SurfaceCard>
+              );
+            })}
           </div>
           <p className="mt-8 max-w-3xl text-sm leading-relaxed text-text-muted">Topics reflect the club&apos;s shared learning guides and possible learning activities. Meeting dates and activities may change; contact QHPC for current details.</p>
         </div>

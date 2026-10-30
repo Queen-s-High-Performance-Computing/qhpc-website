@@ -5,17 +5,21 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Float, MeshDistortMaterial, Sphere, PerspectiveCamera, MeshWobbleMaterial } from "@react-three/drei";
 import * as THREE from "three";
 import { useTheme } from "next-themes";
+import { useThreeTimer } from "@/hooks/useThreeTimer";
 
 function Core() {
   const meshRef = useRef<THREE.Mesh>(null);
   const outerRef = useRef<THREE.Group>(null);
   const { theme } = useTheme();
+  const timer = useThreeTimer();
 
   const color = theme === "dark" ? "#4A90D9" : "#3570B0";
   const glowColor = theme === "dark" ? "#8B7FB8" : "#6B5B9E";
 
-  useFrame((state) => {
-    const time = state.clock.getElapsedTime();
+  useFrame(() => {
+    if (!timer.current) return;
+    timer.current.update();
+    const time = timer.current.getElapsed();
     if (meshRef.current) {
       meshRef.current.rotation.x = time * 0.2;
       meshRef.current.rotation.y = time * 0.25;
