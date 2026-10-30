@@ -3,7 +3,13 @@ import Link from "next/link";
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 
-export function CssicPartnershipFeature() {
+export function CssicPartnershipFeature({
+  headingLevel = "h2",
+}: {
+  headingLevel?: "h2" | "h3";
+}) {
+  const Heading = headingLevel;
+
   return (
     <section className="cssic-feature" aria-labelledby="cssic-feature-title">
       <div className="cssic-feature__art">
@@ -17,7 +23,7 @@ export function CssicPartnershipFeature() {
       </div>
       <div className="cssic-feature__copy">
         <SectionLabel>NEW COLLABORATION · 2026–27</SectionLabel>
-        <h2 id="cssic-feature-title">Semiconductor hardware, together.</h2>
+        <Heading id="cssic-feature-title">Semiconductor hardware, together.</Heading>
         <p>
           QHPC is working with the Canadian Student Semiconductor Industry
           Conference (CSSIC) to develop an affiliated group for students

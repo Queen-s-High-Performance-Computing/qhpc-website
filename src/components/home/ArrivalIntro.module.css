@@ -1,0 +1,47 @@
+.intro {
+  --logo-x: 50vw;
+  --logo-y: 48vh;
+  --logo-size: min(65vw, 760px);
+  --logo-opacity: .075;
+  --logo-color: #a8c4f7;
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  color: #eaf1ff;
+  background: transparent;
+  overscroll-behavior: contain;
+  touch-action: none;
+}
+.intro[open] { display: block; }
+.intro::backdrop { background: transparent; }
+.backdrop { position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 43%, #132e59 0%, #091a37 43%, #050f23 85%); animation: reveal 850ms 1900ms ease-in-out both; }
+.mark { position: absolute; left: 50%; top: 42%; width: clamp(148px, 23vw, 250px); aspect-ratio: 1050 / 1029; transform: translate(-50%, -50%); animation: settle 1050ms 1700ms cubic-bezier(.65, 0, .25, 1) both; }
+.outline, .fill, .shine { position: absolute; inset: 0; mask: url("/logo-inverse.png") center / contain no-repeat; }
+.outline { background: #5c7da5; opacity: .2; animation: outlineAway 400ms 1500ms both; }
+.fill { background: #a8c4f7; clip-path: inset(100% 0 0); animation: illuminate 1200ms 150ms cubic-bezier(.4, 0, .2, 1) forwards, matchLogo 1050ms 1700ms ease-in-out forwards; }
+.shine { background: linear-gradient(110deg, transparent 30%, #fff0 40%, #fff 50%, #fff0 60%, transparent 70%); background-size: 320% 100%; background-position: 140% 0; opacity: 0; animation: sweep 800ms 950ms ease-in-out forwards; }
+.identity { position: absolute; top: calc(42% + clamp(74px, 11.5vw, 125px) + 1.5rem); left: 0; width: 100%; padding: 0 2rem; text-align: center; animation: identityAway 500ms 1600ms both; }
+.name { margin: 0; font-size: clamp(1.7rem, 3vw, 2.2rem); font-weight: 500; letter-spacing: .4em; text-indent: .4em; line-height: 1.2; }
+.caption { margin: .9rem 0 0; color: #a7bdda; font-size: clamp(.52rem, 1.5vw, .65rem); letter-spacing: .16em; text-transform: uppercase; line-height: 1.8; }
+.rule { width: 35px; height: 1px; margin: 1.7rem auto 0; background: #a4c2ff; }
+.corner { position: absolute; left: clamp(1.5rem, 4vw, 4rem); bottom: 2rem; color: #758cab; font: .5rem/1.5 var(--font-mono); letter-spacing: .12em; animation: identityAway 400ms 1700ms both; }
+.skip { position: absolute; right: clamp(1.5rem, 4vw, 4rem); bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; min-height: 44px; padding: .6rem .8rem; border: 1px solid #8fa8f030; border-radius: 4px; background: #0d203b; color: #b9cbe3; font: .65rem/1.5 var(--font-mono); cursor: pointer; animation: identityAway 400ms 2200ms both; }
+.skip:hover { border-color: #a4c2ff; color: #fff; }
+.skip:focus-visible { outline: 2px solid #d3e1ff; outline-offset: 5px; }
+@keyframes illuminate { to { clip-path: inset(0); } }
+@keyframes sweep { 15%, 85% { opacity: .8; } to { opacity: 0; background-position: -40% 0; } }
+@keyframes settle { to { left: var(--logo-x); top: var(--logo-y); width: var(--logo-size); transform: translate(-50%, -50%) rotate(-12deg); } }
+@keyframes matchLogo { to { opacity: var(--logo-opacity); background-color: var(--logo-color); } }
+@keyframes outlineAway { to { opacity: 0; } }
+@keyframes identityAway { to { opacity: 0; visibility: hidden; } }
+@keyframes reveal { to { opacity: 0; } }
+@media (max-width: 700px) { .intro { --logo-size: min(95vw, 500px); } }
+@media (max-width: 480px) { .corner { bottom: 5.5rem; left: 0; width: 100%; text-align: center; font-size: .45rem; } .skip { right: 50%; transform: translateX(50%); } }
+@media (prefers-reduced-motion: reduce) { .intro[open] { display: none; } .intro *, .intro[open] { animation: none; } }
