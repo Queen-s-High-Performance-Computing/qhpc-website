@@ -17,7 +17,7 @@
   color: #eaf1ff;
   background: transparent;
   overscroll-behavior: contain;
-  pointer-events: none;
+  touch-action: none;
 }
 .intro[open] { display: block; }
 .intro::backdrop { background: transparent; }
@@ -32,7 +32,7 @@
 .caption { margin: .9rem 0 0; color: #a7bdda; font-size: clamp(.52rem, 1.5vw, .65rem); letter-spacing: .16em; text-transform: uppercase; line-height: 1.8; }
 .rule { width: 35px; height: 1px; margin: 1.7rem auto 0; background: #a4c2ff; }
 .corner { position: absolute; left: clamp(1.5rem, 4vw, 4rem); bottom: 2rem; color: #758cab; font: .5rem/1.5 var(--font-mono); letter-spacing: .12em; animation: identityAway 400ms 1700ms both; }
-.skip { position: absolute; right: clamp(1.5rem, 4vw, 4rem); bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; min-height: 44px; padding: .6rem .8rem; border: 1px solid #8fa8f030; border-radius: 4px; background: #0d203b; color: #b9cbe3; font: .65rem/1.5 var(--font-mono); cursor: pointer; pointer-events: auto; animation: identityAway 400ms 2200ms both; }
+.skip { position: absolute; right: clamp(1.5rem, 4vw, 4rem); bottom: 1.5rem; display: flex; gap: 1rem; align-items: center; min-height: 44px; padding: .6rem .8rem; border: 1px solid #8fa8f030; border-radius: 4px; background: #0d203b; color: #b9cbe3; font: .65rem/1.5 var(--font-mono); cursor: pointer; animation: identityAway 400ms 2200ms both; }
 .skip:hover { border-color: #a4c2ff; color: #fff; }
 .skip:focus-visible { outline: 2px solid #d3e1ff; outline-offset: 5px; }
 @keyframes illuminate { to { clip-path: inset(0); } }
