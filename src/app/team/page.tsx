@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SurfaceCard } from "@/components/ui/SurfaceCard";
+import { advisors, coPresidents, directors, type Person } from "@/content/team";
 
 export const metadata: Metadata = {
   title: "2026–27 Executive Team",
@@ -9,41 +10,26 @@ export const metadata: Metadata = {
   alternates: { canonical: "/team" },
 };
 
-const directors = [
-  { name: "Charlie Bolt", role: "Technical Director", program: "Computer Engineering · 5th Year+", image: "charlie-bolt.png" },
-  { name: "Daniil Nistribenko", role: "Director of Research", program: "Electrical Engineering · 4th Year", image: "daniil-nistribenko.png" },
-  { name: "Aaron Lin", role: "Director of Projects", program: "Electrical Engineering · 3rd Year", image: "aaron-lin.png" },
-  { name: "Lucas Yaskowich", role: "Director of Curriculum & Education", program: "Computing (Security) & Math · 2nd Year", image: "lucas-yaskowich.png" },
-  { name: "Christina Le", role: "Director of Outreach", program: "Computer Engineering · 2nd Year", image: "christina-le.png" },
-];
-
-const coPresidents = [
-  { name: "Alexandra Kaine", role: "Co-President", image: "alexandra-kaine.png" },
-  { name: "Anthony Botticchio", role: "Co-President", image: "anthony-botticchio.png" },
-];
-
-const advisors = [
-  { name: "Curtis Shorts", role: "Student Advisor", image: "curtis-shorts.png" },
-  { name: "Dr. Ryan Grant", role: "Faculty Advisor", image: "ryan-grant.png" },
-];
-
-type Person = {
-  name: string;
-  role: string;
-  image: string;
-  program?: string;
+const portraitClasses: Record<string, string> = {
+  "alexandra-kaine.png": "scale-[1.25] -translate-y-[5%]",
+  "anthony-botticchio.png": "scale-[1.4] -translate-x-[9%] -translate-y-[5%]",
+  "curtis-shorts.png": "scale-[1.22] -translate-y-[4%]",
+  "ryan-grant.png": "scale-[1.22] -translate-y-[4%]",
 };
 
 function PersonCard({ person }: { person: Person }) {
   return (
     <SurfaceCard className="flex h-full flex-col items-center p-5 text-center sm:p-6">
-      <Image
-        src={`/team/${person.image}`}
-        alt={`Portrait of ${person.name}`}
-        width={192}
-        height={192}
-        className="mb-4 h-28 w-28 rounded-full border-2 border-primary/30 object-cover sm:h-32 sm:w-32"
-      />
+      <div className="mb-4 h-28 w-28 shrink-0 overflow-hidden rounded-full border-2 border-primary/30 sm:h-32 sm:w-32">
+        {/* Crop the original portraits' baked-in circular frames inside one centered frame. */}
+        <Image
+          src={`/team/${person.image}`}
+          alt={`Portrait of ${person.name}`}
+          width={192}
+          height={192}
+          className={`h-full w-full object-cover object-center ${portraitClasses[person.image] ?? "scale-[1.16]"}`}
+        />
+      </div>
       <h3 className="text-lg font-heading font-semibold text-text-primary">{person.name}</h3>
       <p className="mt-1 text-sm font-medium text-primary">{person.role}</p>
       {person.program && <p className="mt-2 text-xs leading-relaxed text-text-muted">{person.program}</p>}
@@ -53,7 +39,7 @@ function PersonCard({ person }: { person: Person }) {
 
 function TeamSection({ title, people, columns }: { title: string; people: Person[]; columns: string }) {
   return (
-    <section className="mt-14 first:mt-0" aria-labelledby={`team-${title.toLowerCase().replaceAll(" ", "-")}`}>
+    <section aria-labelledby={`team-${title.toLowerCase().replaceAll(" ", "-")}`}>
       <div className="mb-6 flex items-end justify-between gap-4">
         <div>
           <SectionLabel>QHPC · 2026–27</SectionLabel>
@@ -81,12 +67,10 @@ export default function TeamPage() {
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+      <div className="mx-auto max-w-6xl space-y-14 px-4 py-16 sm:px-6 sm:py-20 lg:px-8">
+        <TeamSection title="Co-Presidents" people={coPresidents} columns="sm:grid-cols-2" />
         <TeamSection title="Directors" people={directors} columns="sm:grid-cols-2 lg:grid-cols-3" />
-        <div className="mt-14 grid gap-12 lg:grid-cols-2">
-          <TeamSection title="Co-Presidents" people={coPresidents} columns="sm:grid-cols-2" />
-          <TeamSection title="Advisors" people={advisors} columns="sm:grid-cols-2" />
-        </div>
+        <TeamSection title="Advisors" people={advisors} columns="sm:grid-cols-2" />
       </div>
     </div>
   );

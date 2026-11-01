@@ -245,7 +245,7 @@ code, pre, .font-mono {
 }
 
 .home-page {
-  overflow: hidden;
+  overflow: clip;
 }
 
 .home-hero {
@@ -1152,7 +1152,8 @@ code, pre, .font-mono {
   padding: clamp(1.5rem, 3.3vw, 3rem);
 }
 
-.cssic-feature__copy h2 {
+.cssic-feature__copy h2,
+.cssic-feature__copy h3 {
   margin: .85rem 0 .7rem;
   color: var(--text-primary);
   font-size: clamp(1.6rem, 2.5vw, 2.25rem);

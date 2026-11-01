@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import Image from "next/image";
 import {
-  ArrowDown,
   ArrowRight,
   ArrowUpRight,
   Cpu,
@@ -11,9 +9,11 @@ import {
 } from "lucide-react";
 import { QhpcButtonLink } from "@/components/ui/QhpcButtonLink";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { SurfaceCard } from "@/components/ui/SurfaceCard";
+import { OrbitalHero } from "@/components/home/OrbitalHero";
 import { ExplodedClusterExperience } from "@/components/home/ExplodedClusterExperience";
-import { CssicPartnershipFeature } from "@/components/CssicPartnershipFeature";
+import { ClubNews } from "@/components/home/ClubNews";
+import { ArrivalIntro } from "@/components/home/ArrivalIntro";
+import styles from "./home.module.css";
 
 export const metadata: Metadata = {
   title: "Queen's High Performance Computing Club",
@@ -54,67 +54,16 @@ const focusAreas = [
   },
 ];
 
-function ClusterIllustration() {
-  return (
-    <div className="compute-visual">
-      <Image
-        src="/qhpc-server-racks.png"
-        alt="QHPC emblem in a blue-lit server room."
-        fill
-        priority
-        sizes="(max-width: 900px) 100vw, 48vw"
-        className="compute-visual__image"
-      />
-      <div className="compute-visual__topline" aria-hidden="true">
-        <span>QUEEN&apos;S · COMPUTING</span>
-        <span className="compute-visual__mark" aria-hidden="true" />
-      </div>
-      <div className="compute-visual__caption" aria-hidden="true">
-        <span>ONE TEAM</span>
-        <span className="compute-visual__caption-line" aria-hidden="true" />
-        <span>MANY NODES</span>
-      </div>
-    </div>
-  );
-}
-
 export default function HomePage() {
   return (
     <div className="home-page">
-      <section className="home-hero grid-bg">
-        <div className="home-hero__inner">
-          <div className="home-hero__copy">
-            <SectionLabel onDark className="home-eyebrow">
-              <span className="home-eyebrow__line" aria-hidden="true" />
-              Queen&apos;s University · Student Club
-            </SectionLabel>
-            <h1>
-              Computing at a <span>larger scale.</span>
-            </h1>
-            <p className="home-hero__lede">
-              We bring Queen&apos;s students together to explore how powerful
-              computing systems are built, programmed, and used — through
-              hands-on learning and collaborative computing projects.
-            </p>
-            <div className="home-hero__actions">
-              <QhpcButtonLink href="#work" className="home-button">
-                Discover QHPC <ArrowRight size={17} aria-hidden="true" />
-              </QhpcButtonLink>
-              <QhpcButtonLink href="/contact" variant="outline" className="home-button">
-                Get in touch <ArrowUpRight size={16} aria-hidden="true" />
-              </QhpcButtonLink>
-            </div>
-          </div>
-          <ClusterIllustration />
-        </div>
-        <a className="home-scroll-cue" href="#work" aria-label="Scroll to what we do">
-          <span>Explore what we do</span>
-          <ArrowDown size={15} aria-hidden="true" />
-        </a>
-      </section>
+      <ArrivalIntro />
+      <OrbitalHero />
 
-      <section className="home-work" id="work">
-        <div className="home-section-heading">
+      <ClubNews />
+
+      <section className={`home-work ${styles.work}`} id="work">
+        <div className={`home-section-heading ${styles.heading}`}>
           <div>
             <SectionLabel>LEARN · BUILD · COMPETE</SectionLabel>
             <h2>Curiosity, put to work.</h2>
@@ -125,9 +74,9 @@ export default function HomePage() {
           </p>
         </div>
 
-        <div className="home-focus-grid">
+        <div className={`home-focus-grid ${styles.focusGrid}`}>
           {focusAreas.map(({ number, icon: Icon, title, description, href, linkLabel }) => (
-            <SurfaceCard className="home-focus-card" key={number}>
+            <article className={`home-focus-card ${styles.focusCard}`} key={number}>
               <div className="home-focus-card__top">
                 <span className="home-focus-card__number">{number}</span>
                 <span className="home-focus-card__icon"><Icon size={20} aria-hidden="true" /></span>
@@ -137,18 +86,14 @@ export default function HomePage() {
               <Link href={href} className="home-text-link">
                 {linkLabel} <ArrowRight size={15} aria-hidden="true" />
               </Link>
-            </SurfaceCard>
+            </article>
           ))}
         </div>
       </section>
 
       <ExplodedClusterExperience />
 
-      <div className="cssic-feature-wrap">
-        <CssicPartnershipFeature />
-      </div>
-
-      <section className="home-contact">
+      <section className={`home-contact ${styles.contact}`}>
         <div className="home-contact__inner">
           <div>
             <SectionLabel>BUILD WITH US</SectionLabel>
