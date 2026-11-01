@@ -45,14 +45,14 @@ export function ArrivalIntro() {
     };
     const reduceMotion = () => { if (motion.matches) dismiss(); };
 
-    // Native modal behavior keeps the rest of the page inert and restores focus.
+    // Keep the intro non-modal so visitors can scroll and use the page beneath it.
     const onClose = () => {
       delete document.documentElement.dataset.arrivalIntro;
       remember();
     };
     alignLogo();
     try {
-      dialog.showModal();
+      dialog.show();
       document.documentElement.dataset.arrivalIntro = "true";
     } catch {
       return;
@@ -77,7 +77,6 @@ export function ArrivalIntro() {
       ref={dialogRef}
       className={styles.intro}
       aria-label="Welcome to QHPC"
-      data-lenis-prevent
     >
       <div className={styles.backdrop} aria-hidden="true" />
       <div className={styles.mark} aria-hidden="true">

@@ -13,7 +13,7 @@ export const siteConfig = {
   },
   links: {
     github: "https://github.com/Queen-s-High-Performance-Computing",
-    linkedin: "https://www.linkedin.com/company/queens-high-performance-computing",
+    linkedin: "https://www.linkedin.com/company/queen-s-high-performance-computing",
     instagram: "https://www.instagram.com/queenshpc",
   },
   primaryNav: [
