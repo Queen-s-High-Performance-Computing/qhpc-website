@@ -1,7 +1,13 @@
+
 import type { NextConfig } from "next";
 
+const isCloudflare = process.env.CF_PAGES === "1";
+
 const nextConfig: NextConfig = {
-  /* config options here */
+  output: isCloudflare ? "export" : undefined,
+  images: {
+    unoptimized: isCloudflare,
+  },
 };
 
 export default nextConfig;
