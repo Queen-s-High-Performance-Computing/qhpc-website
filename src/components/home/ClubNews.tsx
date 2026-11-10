@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
+import { CssicPartnershipFeature } from "@/components/CssicPartnershipFeature";
 import { newsItems } from "@/content/news";
 
 export function ClubNews() {
@@ -35,6 +36,9 @@ export function ClubNews() {
               </Link>
             </article>
           ))}
+        </div>
+        <div className="mt-6">
+          <CssicPartnershipFeature headingLevel="h3" />
         </div>
       </div>
     </section>
