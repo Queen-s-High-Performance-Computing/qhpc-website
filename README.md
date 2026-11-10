@@ -1,26 +1,47 @@
 # QHPC Website
 
-Public website for Queen's High Performance Computing Club, built with Next.js, React, and TypeScript.
+Public website for Queen's High Performance Computing Club, built with Next.js 16, React, TypeScript, Tailwind CSS, and React Three Fiber.
+
+**Primary domain:** https://qhpc.ca (when connected to Cloudflare Pages)
 
 ## Development
 
-Install Node.js and npm, then run:
+Install Node.js and npm:
 
 ```bash
 npm ci
 npm run dev
 ```
 
-Open http://localhost:3000. Use `npm run lint` to check code and `npm run build` to verify the production build. Commit both `package.json` and `package-lock.json` when dependencies change.
+Visit http://localhost:3000. Before merging changes, run:
+
+```bash
+npm run lint
+CF_PAGES=1 npm run build
+```
+
+The Cloudflare Pages build uses `output: "export"` and produces `out/`. Normal Vercel builds retain the standard Next.js output. Build settings for Cloudflare Pages: **Next.js (Static HTML Export)**, `npm run build`, output directory `out`, production branch `main`.
 
 ## Where to edit
 
-- `src/app/`: pages and layouts; the homepage is `src/app/page.tsx`.
-- `src/content/`: editable content in `news.ts`, `team.ts`, `workshops.ts`, and `projects.ts`. Keep layout and styling in components.
-- `src/components/`: shared components; `home/` contains homepage components and `ui/` contains reusable visual elements.
-- `src/config/site.ts`: site identity, navigation, contact details, and social links.
-- `public/`: images and other static assets.
+- `src/app/`: routes and page layout.
+- `src/app/news/`: public news landing and static individual article routes.
+- `src/content/news.ts`: story data for the news archive, homepage, and article URLs. Add one unique `slug`, `date`, `dateLabel`, `category`, `title`, `summary`, `paragraphs`, and a useful link per update. Older stories should be preserved unless corrected or retracted.
+- `src/content/workshops.ts`: verified public learning guide links and descriptions.
+- `src/content/projects.ts`: **proposed ideas**, separate from active projects described on the Projects page.
+- `src/content/team.ts`: current executives, advisors, and photo filenames.
+- `src/config/site.ts`: metadata, canonical domain, navigation, and club links.
+- `src/components/projects/RaspberryPiRackViewer.tsx`: original conceptual 3D scene; does not embed or distribute external CAD files.
+- `public/`: images and static assets.
 
-Set `NEXT_PUBLIC_SITE_URL` in `.env.local` to override the canonical site URL; otherwise it defaults to `https://www.qhpc.ca`.
+Content should be accurate, current, and clear about what is planned versus completed. Do not present an unsubmitted application as a confirmed competition selection, or list a company as a sponsor without approval. Keep student research that is not an authorized QHPC project out of club publicity.
 
-See [AGENTS.md](AGENTS.md) for coding-agent guidance.
+## 3D model licensing
+
+The original MakerWorld reference CAD file is not distributed in this website. The public 3D viewer instead uses independent primitive geometry to illustrate the club's five-board Pi lab. Obtain the appropriate permission before publishing any remixed or converted third-party CAD model.
+
+## Domain and organizational continuity
+
+The code lives in the QHPC GitHub organization; Cloudflare Pages controls hosting, and Porkbun remains the `qhpc.ca` registrar. Maintain at least two authorized administrators across the GitHub, Cloudflare, and domain-recovery workflows. Do not publish passwords, DNS tokens, or private cluster account details in this repository.
+
+See `AGENTS.md` for coding conventions and project safety rules.

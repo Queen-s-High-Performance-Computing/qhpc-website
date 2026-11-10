@@ -1714,3 +1714,76 @@ code, pre, .font-mono {
 .circuit-border { border-image: none; border-color: var(--line); }
 .status-active, .status-queued, .status-completed { background: var(--accent); box-shadow: none; }
 .section-divider { background: var(--line); }
+
+/* Interactive CAD-based rack assembly viewer. */
+.rack-viewer {
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: var(--surface-raised);
+}
+.rack-viewer__stage {
+  position: relative;
+  height: min(62vw, 530px);
+  min-height: 340px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 62% 34%, rgba(87, 143, 224, .28), transparent 53%),
+    linear-gradient(140deg, #06152f, #132f63 62%, #092041);
+}
+.rack-viewer__stage canvas { touch-action: pan-y; }
+.rack-viewer__topline,
+.rack-viewer__hint {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--font-qhpc-mono), monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  color: #dbe7fc;
+  pointer-events: none;
+}
+.rack-viewer__topline { top: 24px; left: 26px; right: 26px; }
+.rack-viewer__topline span { margin-left: auto; color: #92abd7; }
+.rack-viewer__hint { bottom: 22px; left: 26px; color: #a8c4ef; }
+.rack-viewer__toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 17px 24px 13px;
+}
+.rack-viewer__toolbar p { margin: 0; color: var(--text-secondary); font-size: 13px; }
+.rack-viewer__actions { display: flex; flex-shrink: 1; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.rack-viewer__actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 9px 11px;
+  color: var(--text-primary);
+  background: var(--surface-light);
+  font-size: 12px;
+  cursor: pointer;
+}
+.rack-viewer__actions button:hover { border-color: var(--primary); }
+.rack-viewer__actions button:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+.rack-viewer__note { margin: 0; padding: 0 24px 19px; color: var(--text-muted); font-size: 11px; line-height: 1.5; }
+.rack-viewer__fallback { padding: 7rem 2rem; text-align: center; color: #e2eaf3; }
+.news-card { transition: border-color .2s ease; }
+.news-card:hover { border-color: var(--primary); }
+@media (max-width: 680px) {
+  .rack-viewer__stage { min-height: 300px; height: 390px; }
+  .rack-viewer__toolbar { align-items: flex-start; flex-direction: column; padding: 16px; }
+  .rack-viewer__actions { justify-content: flex-start; width: 100%; }
+  .rack-viewer__topline { top: 17px; left: 16px; right: 16px; font-size: 9px; }
+  .rack-viewer__topline span { display: none; }
+  .rack-viewer__hint { left: 16px; font-size: 9px; }
+  .rack-viewer__note { padding: 0 16px 17px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .news-card { transition: none; }
+}

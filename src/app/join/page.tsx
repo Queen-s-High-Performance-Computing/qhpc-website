@@ -1,57 +1,49 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BookOpen, Mail, Users } from "lucide-react";
+import { ArrowRight, Mail } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
-import { SurfaceCard } from "@/components/ui/SurfaceCard";
 import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: "Join QHPC",
-  description: "Find out how to connect with Queen's High Performance Computing Club.",
+  description: "Queen's students can inquire about QHPC membership by email. Rolling applications through January 2027, meetings and learning resources.",
   alternates: { canonical: "/join" },
 };
 
 export default function JoinPage() {
   return (
     <div className="pt-20">
-      <section className="py-20 grid-bg">
+      <section className="grid-bg py-16 sm:py-20">
         <div className="mx-auto max-w-4xl px-4 sm:px-6">
-          <SectionLabel>GET INVOLVED · 2026–27</SectionLabel>
-          <h1 className="mb-6 text-4xl font-heading font-bold text-text-primary sm:text-5xl">Start with a conversation.</h1>
+          <SectionLabel>JOIN QHPC</SectionLabel>
+          <h1 className="mb-5 text-4xl font-heading font-bold text-text-primary sm:text-5xl">Interested in HPC? Start here.</h1>
           <p className="max-w-3xl text-lg leading-relaxed text-text-secondary">
-            If you&apos;re a Queen&apos;s student curious about high-performance computing, write to QHPC. You don&apos;t need previous HPC or Linux experience to get started.
+            No prior Linux or supercomputing experience is required. Join to follow club activities, attend workshops,
+            or learn about the Raspberry Pi project and competition preparation.
           </p>
-          <a href={`mailto:${siteConfig.contact.email}?subject=Getting%20involved%20with%20QHPC`} className="qhpc-button qhpc-button--primary mt-8">
-            Email QHPC <ArrowRight size={16} aria-hidden="true" />
-          </a>
+          <p className="mt-5 max-w-3xl text-sm leading-relaxed text-text-secondary">
+            <span className="font-semibold text-text-primary">Member applications:</span> Accepted on a rolling basis until January 2027.
+            Open to Queen&apos;s University students only.
+          </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a href={`mailto:${siteConfig.contact.email}?subject=QHPC%20Membership%20Interest`} className="qhpc-button qhpc-button--primary"><Mail size={16} /> Email to join</a>
+          </div>
+          <p className="mt-4 text-sm text-text-secondary">Email <a className="underline underline-offset-4 hover:text-primary" href={`mailto:${siteConfig.contact.email}?subject=QHPC%20Membership%20Interest`}>{siteConfig.contact.email}</a> to express interest in joining.</p>
         </div>
       </section>
-
-      <section className="py-16 sm:py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
-          <SectionLabel>YOUR FIRST STEPS</SectionLabel>
-          <h2 className="mb-8 text-2xl font-heading font-semibold text-text-primary">We&apos;ll help you find a way in.</h2>
-          <div className="grid gap-4 md:grid-cols-3">
-            <SurfaceCard className="p-6">
-              <Mail size={22} className="mb-5 text-primary" aria-hidden="true" />
-              <h3 className="mb-2 text-lg font-heading font-semibold text-text-primary">1. Get in touch</h3>
-              <p className="text-sm leading-relaxed text-text-secondary">Tell us what you&apos;re curious about and ask for current meeting and membership details.</p>
-            </SurfaceCard>
-            <SurfaceCard className="p-6">
-              <Users size={22} className="mb-5 text-primary" aria-hidden="true" />
-              <h3 className="mb-2 text-lg font-heading font-semibold text-text-primary">2. Find your starting point</h3>
-              <p className="text-sm leading-relaxed text-text-secondary">Explore with other students, whether you&apos;re interested in hardware, software, research questions, or learning the basics.</p>
-            </SurfaceCard>
-            <SurfaceCard className="p-6">
-              <BookOpen size={22} className="mb-5 text-primary" aria-hidden="true" />
-              <h3 className="mb-2 text-lg font-heading font-semibold text-text-primary">3. Learn at your pace</h3>
-              <p className="text-sm leading-relaxed text-text-secondary">Start with the club&apos;s shared guides and build toward cluster computing and parallel workloads.</p>
-            </SurfaceCard>
+      <section className="py-14 sm:py-16">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 md:grid-cols-2 sm:px-6">
+          <div className="rounded-2xl border border-border bg-surface-raised p-7">
+            <SectionLabel>MEETINGS</SectionLabel>
+            <h2 className="mt-3 text-xl font-heading font-semibold text-text-primary">Mondays at 6 PM</h2>
+            <p className="mt-3 text-sm leading-relaxed text-text-secondary">This is the Fall 2026 member-meeting time. Check the club&apos;s announcements for the current room and any schedule changes.</p>
           </div>
-          <p className="mt-6 text-sm leading-relaxed text-text-muted">
-            Meeting times, signup steps, and any membership requirements can change. Email us for the latest details; this page does not publish an unverified schedule.
-          </p>
-          <Link href="/resources" className="home-text-link mt-6">Browse QHPC learning resources <ArrowRight size={15} aria-hidden="true" /></Link>
+          <div className="rounded-2xl border border-border bg-surface-raised p-7">
+            <SectionLabel>FIRST STEP</SectionLabel>
+            <h2 className="mt-3 text-xl font-heading font-semibold text-text-primary">Open a Linux guide</h2>
+            <p className="mt-3 text-sm leading-relaxed text-text-secondary">Start with shell commands, Git and software environments. Then try remote computing, benchmarks and profiling.</p>
+            <Link href="/workshops" className="home-text-link mt-5">Published guides <ArrowRight size={15} /></Link>
+          </div>
         </div>
       </section>
     </div>

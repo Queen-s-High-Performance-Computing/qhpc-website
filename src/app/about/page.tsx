@@ -1,69 +1,66 @@
 import type { Metadata } from "next";
-import { ArrowRight, BookOpen, Cpu, Handshake, Network } from "lucide-react";
 import Link from "next/link";
+import { ArrowRight, Terminal, Server, Users } from "lucide-react";
 import { SectionLabel } from "@/components/ui/SectionLabel";
 import { SurfaceCard } from "@/components/ui/SurfaceCard";
 
 export const metadata: Metadata = {
   title: "About QHPC",
-  description: "Meet Queen's High Performance Computing Club and learn what members explore together.",
+  description: "What Queen's High Performance Computing Club does, who can join, and how members learn.",
   alternates: { canonical: "/about" },
 };
-
-const pillars = [
-  { icon: BookOpen, title: "Learn together", description: "Build practical skills in Linux, parallel programming, cluster systems, and performance analysis." },
-  { icon: Cpu, title: "Explore computing systems", description: "Learn how hardware, software, and workloads work together through hands-on projects and benchmarks." },
-  { icon: Network, title: "Connect ideas and people", description: "Bring students together across computing interests, from hardware and software to scientific workloads." },
-];
 
 export default function AboutPage() {
   return (
     <div className="pt-20">
-      <section className="py-20 grid-bg">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6">
-          <SectionLabel>QUEEN&apos;S UNIVERSITY · STUDENT CLUB</SectionLabel>
-          <h1 className="text-4xl sm:text-5xl font-heading font-bold text-text-primary mb-6">About QHPC</h1>
-          <p className="text-lg text-text-secondary leading-relaxed max-w-3xl">
-            Queen&apos;s High Performance Computing Club brings students together to learn how powerful computing systems are built and used. Members explore the tools, programming approaches, and workloads behind high-performance computing through guided learning and collaborative projects.
+      <section className="grid-bg py-16 sm:py-20">
+        <div className="mx-auto max-w-4xl px-4 sm:px-6">
+          <SectionLabel>ABOUT THE CLUB</SectionLabel>
+          <h1 className="mb-5 text-4xl font-heading font-bold text-text-primary sm:text-5xl">What is QHPC?</h1>
+          <p className="max-w-3xl text-lg leading-relaxed text-text-secondary">
+            We&apos;re a Queen&apos;s University student club focused on high-performance computing (HPC):
+            running programs across powerful computers, understanding how clusters are organized,
+            and measuring how software uses hardware.
           </p>
         </div>
       </section>
-
-      <section className="py-16 sm:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-4 md:grid-cols-3">
-            {pillars.map(({ icon: Icon, title, description }) => (
-              <SurfaceCard key={title} className="p-6 sm:p-8">
-                <span className="mb-5 grid h-11 w-11 place-items-center rounded-xl bg-primary/10 text-primary"><Icon size={21} aria-hidden="true" /></span>
-                <h2 className="mb-3 text-xl font-heading font-semibold text-text-primary">{title}</h2>
-                <p className="text-sm leading-relaxed text-text-secondary">{description}</p>
-              </SurfaceCard>
-            ))}
+      <section className="py-14 sm:py-16">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <SectionLabel>WHAT MEMBERS DO</SectionLabel>
+          <div className="mt-5 grid gap-4 md:grid-cols-3">
+            <SurfaceCard className="p-6">
+              <Terminal size={22} className="mb-4 text-primary" />
+              <h2 className="text-xl font-heading font-semibold text-text-primary">Learn the tools</h2>
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary">Work through Linux, SSH, Slurm, benchmarking and profiling exercises. Guides are available publicly.</p>
+              <Link href="/workshops" className="home-text-link mt-5">View workshops <ArrowRight size={15} /></Link>
+            </SurfaceCard>
+            <SurfaceCard className="p-6">
+              <Server size={22} className="mb-4 text-primary" />
+              <h2 className="text-xl font-heading font-semibold text-text-primary">Work on hardware</h2>
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary">Help set up a five-board Raspberry Pi learning cluster and test the software needed to run it.</p>
+              <Link href="/projects" className="home-text-link mt-5">See the Pi project <ArrowRight size={15} /></Link>
+            </SurfaceCard>
+            <SurfaceCard className="p-6">
+              <Users size={22} className="mb-4 text-primary" />
+              <h2 className="text-xl font-heading font-semibold text-text-primary">Prepare as a team</h2>
+              <p className="mt-3 text-sm leading-relaxed text-text-secondary">Practice cluster administration and application performance for student competitions, including our ISC27 applications.</p>
+              <Link href="/competitions" className="home-text-link mt-5">Competition plans <ArrowRight size={15} /></Link>
+            </SurfaceCard>
           </div>
         </div>
       </section>
-
-      <section className="border-t border-border bg-surface-light py-16 sm:py-20">
-        <div className="mx-auto grid max-w-7xl gap-10 px-4 sm:px-6 md:grid-cols-2 lg:px-8">
+      <section className="border-t border-border bg-surface-light py-14 sm:py-16">
+        <div className="mx-auto grid max-w-6xl gap-6 px-4 md:grid-cols-[1.3fr_1fr] md:items-center sm:px-6">
           <div>
-            <SectionLabel>WHAT WE EXPLORE</SectionLabel>
-            <h2 className="text-2xl font-heading font-semibold text-text-primary">From foundations to bigger systems.</h2>
+            <SectionLabel>WHO CAN JOIN</SectionLabel>
+            <h2 className="mt-3 text-2xl font-heading font-semibold text-text-primary">You don&apos;t need HPC experience.</h2>
             <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-              Learning materials cover the command line and version control, remote access and job scheduling, parallel workloads, benchmarking, reproducible experiments, and small cluster systems. Project ideas let members apply those foundations in practice.
+              Students interested in software, hardware, mathematics or scientific computing can start with the published guides. Some advanced activities require training or approved computing access.
             </p>
-            <div className="mt-5 flex flex-wrap gap-x-5 gap-y-3">
-              <Link href="/workshops" className="home-text-link">Explore the learning path <ArrowRight size={15} aria-hidden="true" /></Link>
-              <Link href="/join" className="home-text-link">How to join <ArrowRight size={15} aria-hidden="true" /></Link>
-            </div>
           </div>
-          <div className="rounded-2xl border border-border bg-surface-raised p-6 sm:p-8">
-            <Handshake size={24} className="mb-4 text-primary" aria-hidden="true" />
-            <SectionLabel>FOR PARTNERS AND SUPPORTERS</SectionLabel>
-            <h2 className="text-xl font-heading font-semibold text-text-primary">Help students explore computing.</h2>
-            <p className="mt-3 text-sm leading-relaxed text-text-secondary">
-              We welcome conversations with organizations interested in supporting student learning and practical computing exploration.
-            </p>
-            <Link href="/sponsors" className="home-text-link mt-5">Explore partnerships <ArrowRight size={15} aria-hidden="true" /></Link>
+          <div className="flex flex-wrap gap-3 md:justify-end">
+            <Link href="/join" className="qhpc-button qhpc-button--primary">How to join <ArrowRight size={16} /></Link>
+            <Link href="/team" className="qhpc-button qhpc-button--outline">Meet the team</Link>
           </div>
         </div>
       </section>

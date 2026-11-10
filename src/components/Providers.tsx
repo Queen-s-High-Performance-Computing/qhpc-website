@@ -1,21 +1,11 @@
 "use client";
 
-import { ReactLenis } from "lenis/react";
 import { Toaster } from "react-hot-toast";
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (
-    <ReactLenis
-      root
-      options={{
-        autoRaf: true,
-        anchors: true,
-        lerp: 0.18,
-        wheelMultiplier: 1.12,
-        stopInertiaOnNavigate: true,
-      }}
-    >
-      {children as any}
+    <>
+      {children}
       <Toaster
         position="bottom-right"
         toastOptions={{
@@ -26,6 +16,6 @@ export function Providers({ children }: { children: React.ReactNode }) {
           },
         }}
       />
-    </ReactLenis>
+    </>
   );
 }

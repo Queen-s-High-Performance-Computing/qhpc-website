@@ -2,9 +2,9 @@ export const siteConfig = {
   name: "Queen's High Performance Computing Club",
   shortName: "QHPC",
   description:
-    "QHPC is Queen's University's student club for high-performance computing, with hands-on learning and collaborative projects.",
+    "Queen's University student club for Linux, cluster computing, benchmarking, workshops, and a five-board Raspberry Pi lab.",
   // Override at deployment when the canonical domain is confirmed.
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://www.qhpc.ca").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://qhpc.ca").replace(/\/$/, ""),
   // Use the club-branded server-room artwork for social previews, rather than a bare logo.
   ogImage: "/qhpc-server-racks.png",
   contact: {
@@ -22,7 +22,9 @@ export const siteConfig = {
     { title: "Projects", href: "/projects" },
     { title: "Competitions", href: "/competitions" },
     { title: "Team", href: "/team" },
+    { title: "News", href: "/news" },
     { title: "Sponsors", href: "/sponsors" },
+    { title: "Contact", href: "/contact" },
   ],
   nav: [
     { title: "Home", href: "/" },
@@ -31,6 +33,7 @@ export const siteConfig = {
     { title: "Projects", href: "/projects" },
     { title: "Competitions", href: "/competitions" },
     { title: "Team", href: "/team" },
+    { title: "News", href: "/news" },
     { title: "Resources", href: "/resources" },
     { title: "FAQ", href: "/faq" },
     { title: "Contact", href: "/contact" },

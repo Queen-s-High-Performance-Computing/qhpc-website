@@ -66,6 +66,12 @@ export function Navbar() {
           {/* CTA + Mobile toggle */}
           <div className="flex items-center gap-3">
             <Link
+              href="/sponsors"
+              className="qhpc-nav__cta hidden sm:flex xl:hidden items-center gap-1 px-4 py-2 text-sm font-medium border border-border rounded-full hover:bg-surface transition-all duration-200"
+            >
+              <span>Sponsor</span><ArrowUpRight size={15} aria-hidden="true" />
+            </Link>
+            <Link
               href="/join"
               className="qhpc-nav__cta hidden sm:flex items-center gap-1 px-4 py-2 text-sm font-medium border border-border rounded-full hover:bg-surface transition-all duration-200"
             >

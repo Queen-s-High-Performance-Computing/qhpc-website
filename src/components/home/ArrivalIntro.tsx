@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import styles from "./ArrivalIntro.module.css";
 
-const SESSION_KEY = "qhpc-arrival-seen";
+const SESSION_KEY = "qhpc-arrival-restored-2026";
 const DURATION = 2850;
 
 /** A short brand animation, independent of page or asset loading. */
