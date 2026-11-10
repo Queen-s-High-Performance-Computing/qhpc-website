@@ -31,14 +31,14 @@ The Cloudflare Pages build uses `output: "export"` and produces `out/`. Normal V
 - `src/content/projects.ts`: **proposed ideas**, separate from active projects described on the Projects page.
 - `src/content/team.ts`: current executives, advisors, and photo filenames.
 - `src/config/site.ts`: metadata, canonical domain, navigation, and club links.
-- `src/components/projects/RaspberryPiRackViewer.tsx`: original conceptual 3D scene; does not embed or distribute external CAD files.
+- `src/components/projects/RaspberryPiRackViewer.tsx`: interactive rack viewer built from the GLB exports of STEP geometry supplied by QHPC, with additional illustrative in-scene geometry and assembly animation.
 - `public/`: images and static assets.
 
 Content should be accurate, current, and clear about what is planned versus completed. Do not present an unsubmitted application as a confirmed competition selection, or list a company as a sponsor without approval. Keep student research that is not an authorized QHPC project out of club publicity.
 
 ## 3D model licensing
 
-The original MakerWorld reference CAD file is not distributed in this website. The public 3D viewer instead uses independent primitive geometry to illustrate the club's five-board Pi lab. Obtain the appropriate permission before publishing any remixed or converted third-party CAD model.
+The original MakerWorld reference CAD file is not distributed in this website. The viewer uses QHPC-supplied STEP CAD exports for the rack frame, trays, and Raspberry Pi boards; the shipped GLB files identify `trimesh` as their generator. The switch internals, port details, fasteners, and assembly animation include illustrative geometry. The repository does not identify who originally authored the supplied STEP files or describe a LiDAR scan. Obtain the appropriate permission before publishing any remixed or converted third-party CAD model.
 
 ## Domain and organizational continuity
 

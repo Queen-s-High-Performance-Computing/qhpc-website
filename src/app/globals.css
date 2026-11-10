@@ -1731,7 +1731,11 @@ code, pre, .font-mono {
     radial-gradient(circle at 62% 34%, rgba(87, 143, 224, .28), transparent 53%),
     linear-gradient(140deg, #06152f, #132f63 62%, #092041);
 }
-.rack-viewer__stage canvas { touch-action: pan-y; }
+.rack-viewer__stage canvas {
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
 .rack-viewer__topline,
 .rack-viewer__hint {
   position: absolute;
@@ -1779,6 +1783,7 @@ code, pre, .font-mono {
   .rack-viewer__stage { min-height: 300px; height: 390px; }
   .rack-viewer__toolbar { align-items: flex-start; flex-direction: column; padding: 16px; }
   .rack-viewer__actions { justify-content: flex-start; width: 100%; }
+  .rack-viewer__actions button { min-height: 44px; }
   .rack-viewer__topline { top: 17px; left: 16px; right: 16px; font-size: 9px; }
   .rack-viewer__topline span { display: none; }
   .rack-viewer__hint { left: 16px; font-size: 9px; }

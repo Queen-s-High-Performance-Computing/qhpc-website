@@ -17,5 +17,9 @@ log/
 # Next.js dependencies and generated files.
 node_modules/
 .next/
+out/
 next-env.d.ts
 *.tsbuildinfo
+
+# Local task scratch and generated previews.
+work/

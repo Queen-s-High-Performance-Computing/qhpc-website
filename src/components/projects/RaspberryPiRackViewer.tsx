@@ -1,7 +1,7 @@
 "use client";
 
 import { Suspense, useCallback, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import type { ComponentRef } from "react";
+import type { ComponentRef, PointerEvent as ReactPointerEvent } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Bounds, Html, OrbitControls, useGLTF } from "@react-three/drei";
 import { Pause, Play, RotateCcw, ZoomIn, ZoomOut } from "lucide-react";
@@ -22,6 +22,14 @@ const MODEL = {
 const PITCH = 0.28; // 28 mm between the five trays, inferred from assembled rack spacing
 const FEATURED = 2; // animate the middle tray to keep the other four visible
 const DURATION = 13.6;
+
+type TouchPoint = { x: number; y: number };
+
+function touchDistance(points: Map<number, TouchPoint>): number | null {
+  if (points.size !== 2) return null;
+  const [first, second] = Array.from(points.values());
+  return Math.hypot(first.x - second.x, first.y - second.y);
+}
 
 function ease(value: number): number {
   const t = Math.max(0, Math.min(1, value));
@@ -217,6 +225,7 @@ export function RaspberryPiRackViewer() {
   const [playing, setPlaying] = useState(true);
   const [autoRotate, setAutoRotate] = useState(false);
   const orbitControls = useRef<ComponentRef<typeof OrbitControls>>(null);
+  const touchPointers = useRef(new Map<number, TouchPoint>());
 
   // Do not capture the visitor's scroll wheel over the canvas.
   // Zoom is available using buttons, leaving normal page scrolling uninterrupted.
@@ -229,6 +238,29 @@ export function RaspberryPiRackViewer() {
     const nextDistance = Math.min(8.5, Math.max(2.3, distance * factor));
     controls.object.position.copy(controls.target).addScaledVector(offset, nextDistance / distance);
     controls.update();
+  }, []);
+
+  // Keep one-finger drags for OrbitControls and handle pinch zoom separately.
+  // OrbitControls zoom stays disabled so mouse-wheel input continues to scroll the page.
+  const onStagePointerDown = useCallback((event: ReactPointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== "touch" || !(event.target instanceof HTMLCanvasElement)) return;
+    touchPointers.current.set(event.pointerId, { x: event.clientX, y: event.clientY });
+  }, []);
+
+  const onStagePointerMove = useCallback((event: ReactPointerEvent<HTMLDivElement>) => {
+    const points = touchPointers.current;
+    if (event.pointerType !== "touch" || !points.has(event.pointerId)) return;
+
+    const previousDistance = touchDistance(points);
+    points.set(event.pointerId, { x: event.clientX, y: event.clientY });
+    const nextDistance = touchDistance(points);
+    if (previousDistance && nextDistance && nextDistance > 0) {
+      zoomBy(previousDistance / nextDistance);
+    }
+  }, [zoomBy]);
+
+  const onStagePointerEnd = useCallback((event: ReactPointerEvent<HTMLDivElement>) => {
+    touchPointers.current.delete(event.pointerId);
   }, []);
   const [restartToken, setRestartToken] = useState(0);
   const [phase, setPhase] = useState<Phase>("assembled");
@@ -248,14 +280,20 @@ export function RaspberryPiRackViewer() {
 
   return (
     <div className="rack-viewer" aria-label="Interactive 3D assembly of QHPC's five-Raspberry-Pi rack using supplied STEP CAD geometry">
-      <div className="rack-viewer__stage">
+      <div
+        className="rack-viewer__stage"
+        onPointerDown={onStagePointerDown}
+        onPointerMove={onStagePointerMove}
+        onPointerUp={onStagePointerEnd}
+        onPointerCancel={onStagePointerEnd}
+      >
         <div className="rack-viewer__topline">
           <span>QHPC HARDWARE LAB</span>
           <span>RACK ASSEMBLY</span>
         </div>
         <Canvas
           camera={{ position: [2.65, 1.72, 3.45], fov: 39 }}
-          dpr={[1, 1.7]}
+          dpr={[1, 1.5]}
           gl={{ antialias: true, alpha: true }}
           fallback={<p className="rack-viewer__fallback">This browser cannot display the 3D rack. Photographs of the real build appear below.</p>}
         >
@@ -280,7 +318,7 @@ export function RaspberryPiRackViewer() {
             autoRotateSpeed={0.35}
           />
         </Canvas>
-        <div className="rack-viewer__hint">DRAG TO ROTATE · USE BUTTONS TO ZOOM</div>
+        <div className="rack-viewer__hint">DRAG TO ROTATE · PINCH OR USE BUTTONS TO ZOOM</div>
       </div>
       <div className="rack-viewer__toolbar">
         <div>
