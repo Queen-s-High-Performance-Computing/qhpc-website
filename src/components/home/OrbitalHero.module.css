@@ -56,7 +56,12 @@
   letter-spacing: .12em;
 }
 .hero.hero h1 {
-  margin: 0;
+  /* Legacy .home-hero h1 has max-width: 720px. In our 880px copy
+     container that shifts a centered headline to the left. */
+  max-width: none;
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
   color: #f3f6ff;
   font-size: clamp(3.3rem, 6.6vw, 6.7rem);
   font-weight: 500;
