@@ -129,7 +129,7 @@ export default function RootLayout({
             <main id="main-content" className="flex-1">{children}</main>
             <Footer />
             <ThemeToggle />
-            <Analytics />
+            {process.env.CF_PAGES !== "1" && <Analytics />}
           </Providers>
         </ThemeProvider>
       </body>

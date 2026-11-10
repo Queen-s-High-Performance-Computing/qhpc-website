@@ -1,117 +1,70 @@
-import React from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Mail, MapPin } from "lucide-react";
-import { FaLinkedin, FaInstagram } from "react-icons/fa6";
-import { QHPCLogo } from "./QHPCLogo";
+import { ArrowUpRight, Mail } from "lucide-react";
+import { FaGithub, FaInstagram, FaLinkedin } from "react-icons/fa6";
 import { siteConfig } from "@/config/site";
+
+const exploreLinks = [
+  { title: "Workshops", href: "/workshops" },
+  { title: "Projects", href: "/projects" },
+  { title: "Competitions", href: "/competitions" },
+  { title: "News", href: "/news" },
+];
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-border bg-card/50">
-      <div className="section-divider" />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Brand */}
-          <div className="lg:col-span-1">
-            <QHPCLogo size={32} />
-            <p className="mt-4 text-sm text-text-secondary leading-relaxed">
-              Queen&apos;s University&apos;s student club for high-performance
-              computing, hands-on learning, and collaborative projects.
+    <footer className="border-t border-[#203b69] bg-[#081a39] text-[#e7efff]">
+      <div className="mx-auto max-w-7xl px-5 py-10 sm:px-6 sm:py-12 lg:px-8">
+        <div className="grid gap-9 md:grid-cols-[1.5fr_0.75fr_1fr] md:gap-12">
+          <div className="max-w-sm">
+            <Link href="/" className="inline-flex items-center gap-2.5 text-lg font-heading font-semibold text-white" aria-label="QHPC home">
+              <Image src="/logo-inverse.png" width={34} height={34} alt="" aria-hidden="true" />
+              QHPC
+            </Link>
+            <p className="mt-4 max-w-[24rem] text-sm leading-7 text-[#bbcae6]">
+              Queen&apos;s University student club for Linux, clusters, benchmarking and hands-on computing projects.
             </p>
-            <div className="flex items-center gap-3 mt-6">
-              <a
-                href={siteConfig.links.linkedin}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-surface hover:bg-primary/10 text-text-secondary hover:text-primary transition-all duration-200"
-                aria-label="LinkedIn"
-              >
-                <FaLinkedin size={18} />
-              </a>
-              <a
-                href={siteConfig.links.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-2 rounded-lg bg-surface hover:bg-primary/10 text-text-secondary hover:text-primary transition-all duration-200"
-                aria-label="Instagram"
-              >
-                <FaInstagram size={18} />
-              </a>
-              <a
-                href={`mailto:${siteConfig.contact.email}`}
-                className="p-2 rounded-lg bg-surface hover:bg-primary/10 text-text-secondary hover:text-primary transition-all duration-200"
-                aria-label="Email"
-              >
-                <Mail size={18} />
-              </a>
-            </div>
           </div>
 
-          {/* Navigation */}
-          <div>
-            <h3 className="text-sm font-heading font-semibold text-text-primary mb-4 uppercase tracking-wider">
-              Navigation
-            </h3>
-            <ul className="space-y-2">
-              {siteConfig.nav.map((link) => (
+          <nav aria-label="Footer navigation">
+            <h2 className="mb-4 font-mono text-[11px] uppercase tracking-[.14em] text-[#8eaef7]">Explore</h2>
+            <ul className="grid grid-cols-2 gap-x-5 gap-y-3 md:grid-cols-1">
+              {exploreLinks.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className="text-sm text-text-secondary hover:text-primary transition-colors duration-200"
-                  >
+                  <Link className="text-sm text-[#dbe6fa] transition-colors hover:text-white hover:underline" href={link.href}>
                     {link.title}
                   </Link>
                 </li>
               ))}
             </ul>
-          </div>
+          </nav>
 
-          {/* Contact */}
           <div>
-            <h3 className="text-sm font-heading font-semibold text-text-primary mb-4 uppercase tracking-wider">
-              Contact
-            </h3>
-            <ul className="space-y-3">
-              <li className="flex items-start gap-2 text-sm text-text-secondary">
-                <Mail size={16} className="mt-0.5 text-primary shrink-0" />
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="hover:text-primary transition-colors"
-                >
-                  {siteConfig.contact.email}
-                </a>
-              </li>
-              <li className="flex items-start gap-2 text-sm text-text-secondary">
-                <MapPin size={16} className="mt-0.5 text-primary shrink-0" />
-                <span>
-                  {siteConfig.contact.location.split(',')[0]}
-                  <br />
-                  {siteConfig.contact.location.split(',').slice(1).join(',').trim()}
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          {/* Ways to connect */}
-          <div>
-            <h3 className="text-sm font-heading font-semibold text-text-primary mb-4 uppercase tracking-wider">
-              Find us online
-            </h3>
-            <ul className="space-y-3">
-              <li><Link href="/contact" className="text-sm text-text-secondary hover:text-primary transition-colors">Membership questions</Link></li>
-              <li><a href={siteConfig.links.linkedin} target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary hover:text-primary transition-colors">LinkedIn</a></li>
-              <li><a href={siteConfig.links.instagram} target="_blank" rel="noopener noreferrer" className="text-sm text-text-secondary hover:text-primary transition-colors">Instagram</a></li>
-            </ul>
+            <h2 className="mb-4 font-mono text-[11px] uppercase tracking-[.14em] text-[#8eaef7]">Connect</h2>
+            <a href={`mailto:${siteConfig.contact.email}`} className="inline-flex items-center gap-2 text-sm text-[#e7efff] hover:underline">
+              <Mail size={16} aria-hidden="true" /> {siteConfig.contact.email}
+            </a>
+            <div className="mt-4 flex flex-wrap gap-x-5 gap-y-3 text-sm">
+              <Link href="/join" className="inline-flex items-center gap-1 text-[#dbe6fa] hover:text-white hover:underline">
+                Join QHPC <ArrowUpRight size={13} aria-hidden="true" />
+              </Link>
+              <Link href="/sponsors" className="inline-flex items-center gap-1 text-[#dbe6fa] hover:text-white hover:underline">
+                Partner with us <ArrowUpRight size={13} aria-hidden="true" />
+              </Link>
+              <Link href="/contact" className="inline-flex items-center gap-1 text-[#dbe6fa] hover:text-white hover:underline">
+                Contact <ArrowUpRight size={13} aria-hidden="true" />
+              </Link>
+            </div>
+            <div className="mt-5 flex gap-4 text-[#a8bee9]">
+              <a href={siteConfig.links.linkedin} aria-label="QHPC on LinkedIn" target="_blank" rel="noopener noreferrer" className="hover:text-white"><FaLinkedin size={18} /></a>
+              <a href={siteConfig.links.instagram} aria-label="QHPC on Instagram" target="_blank" rel="noopener noreferrer" className="hover:text-white"><FaInstagram size={18} /></a>
+              <a href={siteConfig.links.github} aria-label="QHPC on GitHub" target="_blank" rel="noopener noreferrer" className="hover:text-white"><FaGithub size={18} /></a>
+            </div>
           </div>
         </div>
-
-        {/* Bottom bar */}
-        <div className="section-divider mt-12 mb-6" />
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-muted">
-          <p>
-            © {new Date().getFullYear()}{" "}Queen&apos;s High-Performance Computing.
-            All rights reserved.
-          </p>
+        <div className="mt-9 flex flex-wrap justify-between gap-2 border-t border-[#29436b] pt-5 text-xs text-[#9bb0d3]">
+          <span>© {new Date().getFullYear()} QHPC</span>
+          <span>Queen&apos;s University · Kingston, Ontario</span>
         </div>
       </div>
     </footer>

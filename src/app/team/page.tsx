@@ -11,7 +11,8 @@ export const metadata: Metadata = {
 };
 
 const portraitClasses: Record<string, string> = {
-  "alexandra-kaine.png": "scale-[1.25] -translate-y-[5%]",
+  "alexandra-kaine.png": "scale-100",
+  "alexandra-kaine-2026.png": "scale-100",
   "anthony-botticchio.png": "scale-[1.4] -translate-x-[9%] -translate-y-[5%]",
   "curtis-shorts.png": "scale-[1.22] -translate-y-[4%]",
   "ryan-grant.png": "scale-[1.22] -translate-y-[4%]",
@@ -62,7 +63,7 @@ export default function TeamPage() {
           <SectionLabel>QUEEN&apos;S UNIVERSITY · STUDENT CLUB</SectionLabel>
           <h1 className="text-4xl sm:text-5xl font-heading font-bold text-text-primary mb-6">Meet the 2026–27 Executive Team</h1>
           <p className="text-lg text-text-secondary leading-relaxed max-w-3xl">
-            Meet the students and advisors guiding Queen&apos;s High Performance Computing Club this year.
+            The 2026–27 student executive team and advisors. For club questions, use the Contact page.
           </p>
         </div>
       </section>

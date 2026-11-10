@@ -1,11 +1,20 @@
 "use client";
 
-import React, { useRef, useMemo } from "react";
+import React, { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Float, MeshDistortMaterial, Sphere, PerspectiveCamera, MeshWobbleMaterial } from "@react-three/drei";
+import { Float, Sphere, PerspectiveCamera } from "@react-three/drei";
 import * as THREE from "three";
 import { useTheme } from "next-themes";
 import { useThreeTimer } from "@/hooks/useThreeTimer";
+
+// Stable particle positions prevent hydration drift and satisfy React's render-purity rules.
+// The golden angle spreads particles around the core without using Math.random().
+const dataBitPositions: [number, number, number][] = Array.from({ length: 10 }, (_, i) => {
+  const angle = i * Math.PI * (3 - Math.sqrt(5));
+  const radius = 2.4 + (((i * 7) % 13) / 12) * 1.2;
+  const height = ((((i * 5) % 13) / 12) - 0.5) * 3;
+  return [Math.cos(angle) * radius, height, Math.sin(angle) * radius];
+});
 
 function Core() {
   const meshRef = useRef<THREE.Mesh>(null);
@@ -61,28 +70,17 @@ function Core() {
           ))}
         </group>
 
-        {/* Floating Data Bits - Reduced count */}
-        {useMemo(() => [...Array(10)].map((_, i) => {
-          const angle = Math.random() * Math.PI * 2;
-          const radius = 2.4 + Math.random() * 1.2;
-          return (
-            <mesh
-              key={i}
-              position={[
-                Math.cos(angle) * radius,
-                (Math.random() - 0.5) * 3,
-                Math.sin(angle) * radius
-              ]}
-            >
-              <boxGeometry args={[0.04, 0.04, 0.04]} />
-              <meshStandardMaterial
-                color={i % 2 === 0 ? color : glowColor}
-                emissive={i % 2 === 0 ? color : glowColor}
-                emissiveIntensity={1}
-              />
-            </mesh>
-          );
-        }), [color, glowColor])}
+        {/* Floating data bits at deterministic positions */}
+        {dataBitPositions.map((position, i) => (
+          <mesh key={i} position={position}>
+            <boxGeometry args={[0.04, 0.04, 0.04]} />
+            <meshStandardMaterial
+              color={i % 2 === 0 ? color : glowColor}
+              emissive={i % 2 === 0 ? color : glowColor}
+              emissiveIntensity={1}
+            />
+          </mesh>
+        ))}
       </Float>
     </>
   );

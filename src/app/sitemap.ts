@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/config/site";
+import { newsItems } from "@/content/news";
 
 export const dynamic = "force-static";
 
@@ -10,6 +11,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/team",
     "/workshops",
     "/projects",
+    "/news",
     "/competitions",
     "/resources",
     "/faq",
@@ -23,5 +25,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: route === "" ? 1 : 0.8,
   }));
 
-  return routes;
+  return [...routes, ...newsItems.map((item) => ({
+    url: `${siteConfig.url}/news/${item.slug}`,
+    lastModified: item.date,
+    changeFrequency: "monthly" as const,
+    priority: 0.65,
+  }))];
 }
